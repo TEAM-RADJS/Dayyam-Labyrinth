@@ -23,7 +23,7 @@ function movePlayer(keyPressed){
 	var acceptedMoves = ['w', 'a', 's', 'd', 'space'];
 	//TODO: check if acceptedMoves.includes(keyPressed)
 	//TODO: if not, return a null value
-	//TODO: if yes create conditions for each key option other than space;
+	//TODO: if yes create conditions for each key option other than space
 	//TODO: for w, check if mapData['map'][(mapData['playerPosition'][0])-1][(mapData['playerPosition'][1])] is a traversible tile; if it is mapData['playerPosition'][0] -= 1;
 	//TODO: for s, check if mapData['map'][(mapData['playerPosition'][0])+1][(mapData['playerPosition'][1])] is a traversible tile; if it is mapData['playerPosition'][0] += 1;
 	//TODO: for a, check if mapData['map'][(mapData['playerPosition'][0])][(mapData['playerPosition'][1])-1] is a traversible tile; if it is mapData['playerPosition'][1] -= 1;
