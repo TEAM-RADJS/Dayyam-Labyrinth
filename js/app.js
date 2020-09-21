@@ -16,7 +16,141 @@ function makeNewMaze(){
 		}
 	}
 
+	function generateMap(){
 
+		mapData.playerPosition = [];
+		mapData.playerPosition.push(Math.ceil(Math.random()*(mapSize-2*mapMargin)+mapMargin));
+		mapData.playerPosition.push(Math.ceil(Math.random()*(mapSize-2*mapMargin)+mapMargin));
+
+		mapData.map[mapData.playerPosition[0]][mapData.playerPosition[1]] = 1;
+
+		curY = mapData.playerPosition[0];
+		curX = mapData.playerPosition[1];
+
+		var triedToStep = 0;
+		var madeAStep = 0;
+		var monsterCount = 0;
+
+		do {
+			var upRand = Math.random()*10;
+			var downRand = Math.random()*10;
+			var rightRand = Math.random()*10;
+			var leftRand = Math.random()*10;
+
+			if (upRand > downRand && upRand > rightRand && upRand > leftRand) {
+				triedToStep++;
+				if (mapData.map[curY-1][curX] == 0 && (mapData.map[curY-1][curX+1] != 1 || mapData.map[curY-1][curX-1] != 1)){
+					triedToStep = 0;
+					madeAStep++;
+					curY-=1;
+					if (madeAStep%120 == 0){
+						monsterCount++;
+						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
+						eval('mapData.monster'+monsterCount+'Origin = []');
+						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
+						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+					} else if (madeAStep%20 == 0){
+						mapData.map[curY][curX] = 2;
+					} else {
+						mapData.map[curY][curX] = 1;
+					}
+				}
+			} else if (downRand > rightRand && downRand > leftRand) {
+				triedToStep++;
+				if (mapData.map[curY+1][curX] == 0 && (mapData.map[curY+1][curX+1] != 1 || mapData.map[curY+1][curX-1] != 1)){
+					triedToStep = 0;
+					madeAStep++;
+					curY+=1;
+					if (madeAStep%120 == 0){
+						monsterCount++;
+						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
+						eval('mapData.monster'+monsterCount+'Origin = []');
+						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
+						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+					} else if (madeAStep%20 == 0){
+						mapData.map[curY][curX] = 2;
+					} else {
+						mapData.map[curY][curX] = 1;
+					}
+				}
+			} else if (rightRand > leftRand) {
+				triedToStep++;
+				if (mapData.map[curY][curX+1] == 0 && (mapData.map[curY+1][curX+1] != 1 || mapData.map[curY-1][curX+1] != 1)){
+					triedToStep = 0;
+					madeAStep++;
+					curX+=1;
+					if (madeAStep%120 == 0){
+						monsterCount++;
+						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
+						eval('mapData.monster'+monsterCount+'Origin = []');
+						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
+						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+					} else if (madeAStep%20 == 0){
+						mapData.map[curY][curX] = 2;
+					} else {
+						mapData.map[curY][curX] = 1;
+					}
+				}
+			} else {
+				triedToStep++;
+				if (mapData.map[curY][curX-1] == 0 && (mapData.map[curY+1][curX-1] != 1 || mapData.map[curY-1][curX-1] != 1)){
+					triedToStep = 0;
+					madeAStep++;
+					curX-=1;
+					if (madeAStep%120 == 0){
+						monsterCount++;
+						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
+						eval('mapData.monster'+monsterCount+'Origin = []');
+						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
+						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+					} else if (madeAStep%20 == 0){
+						mapData.map[curY][curX] = 2;
+					} else {
+						mapData.map[curY][curX] = 1;
+					}
+				}
+			} 
+			if (triedToStep == 10) {
+				madeAStep++;
+				if (upRand > downRand && upRand > rightRand && upRand > leftRand) {
+					curY--;
+				} else if (downRand > rightRand && downRand > leftRand) {
+					curY++;
+				} else if (rightRand > leftRand) {
+					curX++;
+				} else {
+					curX--;
+				}
+				if (mapData.map[curY][curX] != 2 && mapData.map[curY][curX] != 4 && mapData.map[curY][curX] != 1 && madeAStep%20 != 0){
+					mapData.map[curY][curX] = 1;
+				} else {
+
+					if (madeAStep%120 == 0){
+						monsterCount++;
+						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
+						eval('mapData.monster'+monsterCount+'Origin = []');
+						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
+						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+					} else if (madeAStep%20 == 0){
+						mapData.map[curY][curX] = 2;
+					}
+
+				}
+				triedToStep = 0;
+			}
+		} while ((curY != 0 && curY != mapSize-1) && (curX != 0 && curX != mapSize-1));
+		return madeAStep;
+	}
+
+
+	var goodMap = false;
+
+	while (!goodMap) {
+		var stepsCounted = generateMap();
+		if (stepsCounted > mapSize*8) {
+			goodMap = true;
+		}
+	}
 }
 
 function showEnvironment(){
