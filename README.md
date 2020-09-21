@@ -12,6 +12,8 @@ Final Project Code 201
 
 ![](assets/Home_Page_Wireframe.png)
 
+![](assets/Domain_Model)
+
 ## User Stories
 
 As someone with interest in backend game design, I want to make a program that procedurally generates a new environment so that users can play multiple sessions without getting bored.
