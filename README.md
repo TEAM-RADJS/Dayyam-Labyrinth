@@ -46,3 +46,14 @@ Feature tasks:
 Acceptance tasks:
 - The inner images should be styled to transition smoothly with eachother
 - The start game form should also launch ambient music that loops
+
+As an adventure enthusiast and aspiring web developer I am excited about collaborating in building a mind-teasing-puzzle with a bit of thrill 
+- dora blakey diana
+
+Feature Tasks: 
+- The maze offers interactive qualities to keep a participant engaged
+- There are added challenges of 'monster' pursuit
+
+Acceptance Tests:
+- The participant determines duration and unique direction of the game
+- Image and embedded audio will enhance the participant's experience 
