@@ -4,6 +4,19 @@ mapData = {};
 function makeNewMaze(){
 	//Robert TODO: build a process by which a new array of arrays is created with the proper lengths, and to ensure that there IS a path to the end
 	//Robert TODO: assign mapData these key value pairs {map: [ [], [], [], [] ],  playerPosition: [y, x], mosterNOrigin: [y, x]}
+	var mapSize = 50;
+	var mapMargin = mapSize / 3;
+
+	mapData.map = [];
+
+	for (let i = 0; i < mapSize; i++) {
+		mapData.map.push([]);
+		for (let j = 0; j < mapSize; j++) {
+			mapData.map[i].push(0);
+		}
+	}
+
+
 }
 
 function showEnvironment(){
@@ -35,12 +48,16 @@ function movePlayer(keyPressed){
 }
 
 function startGame(){
-	makeNewMaze();
-	//TODO: Use DOM to change the background-image:url(assets/imagefile)); attribute of the container used in initial state, and add new elements to make up the new screen (including a table with a tbody to receive the map data), start audio
-	//TODO: write a loop to iterate over mapData['map'] and create a 'tr' element for each inner array, and then in a nested for loop a 'td' for each index inside of that array, and assign that td the innerHTML of an 'img' element, assign the image a source attribute for a blank/monocolor block image and give it an id of String(i)+'-'+String(j)
+	//TODO: create a variable mapSize and assign it the value of the '#askSize' input form
+	makeNewMaze(mapSize);
+	//TODO: use DOM to start audio
+	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
+	//TODO: write a loop to iterate over mapData['map'] and create a 'tr' element for each inner array, and then in a nested for loop a 'td' for each index inside of that array, and assign that td the innerHTML of an 'img' element. Assign the image  an id of String(i)+'-'+String(j)
 	showEnvironment();
-	//TODO: addEvent listeners for 'key-up' that triggers a movement; f.e. document.addEventListener("keyup", function(e){e.preventDefault(); moveUp(e.key);})
+	document.addEventListener("keyup", function(e){
+		e.preventDefault(); 
+		movePlayer(e.key);
+	})
 }
 
-
-//TODO: identify form elements and attach eventListeners; assuming the initial state is just a splash art backdrop with a start game button just one eventListener to call the startGame() function and audio
+//TODO: identify #startButton element and attach an eventListener; eventListener will launch startGame 
