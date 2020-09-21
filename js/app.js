@@ -164,6 +164,82 @@ function showEnvironment(){
 
 function hunterMove(){
 	//Robert TODO: translate aStar function from Dungeon_Game into javaScript here
+	var setOfMonsters = Object.keys(mapData);
+	setOfMonsters.splice(0, 2);
+
+	for (let z = 0; z < setOfMonsters.length; z++) {
+		
+		var sampleMap = JSON.parse(JSON.stringify(mapData.map));
+
+		for (let i = 0; i < sampleMap.length; i++){
+			for (let j = 0; j < sampleMap[i].length; j++){
+				if (sampleMap[i][j] == 1){
+					sampleMap[i][j] == 'f';
+				} else {
+					sampleMap[i][j] == 'w';
+				}
+			}
+		}
+
+		var didSomething = true;
+		var steps = 0;
+		sampleMap[mapData.playerPosition[0]][mapData.playerPosition[1]] = steps;
+
+		while (sampleMap[mapData[setOfMonsters[z]][0]][mapData[setOfMonsters[z]][1]] == "f") {
+			if (didSomething == false) {
+				break;
+			}
+			didSomething = false;
+			for (let i = 0; i < sampleMap.length; i++){
+				for (let j = 0; j < sampleMap[i].length; j++){
+					if (sampleMap[i][j] == steps){
+						if (i != 0){
+							if (sampleMap[i-1][j] == 'f'){
+								sampleMap[i-1][j] = steps+1;
+								didSomething = true;
+							}
+						}
+						if (i != sampleMap.length-1){
+							if (sampleMap[i+1][j] == 'f'){
+								sampleMap[i+1][j] = steps+1;
+								didSomething = true;
+							}
+						}
+						if (j != 0){
+							if (sampleMap[i][j-1] == 'f'){
+								sampleMap[i][j-1] = steps+1;
+								didSomething = true;
+							}
+						}
+						if (j != sampleMap[0].length-1){
+							if (sampleMap[i][j+1] == 'f'){
+								sampleMap[i][j+1] = steps+1;
+								didSomething = true;
+							}
+						}
+					}
+				}
+			}
+			steps++;
+		}
+		if (sampleMap [mapData[setOfMonsters[z]][0] + 1][mapData[setOfMonsters[z]][1]] == steps-1){
+			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
+			mapData[setOfMonsters[z][0]] += 1;
+			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
+		} else if (sampleMap[mapData[setOfMonsters[z]][0] - 1][mapData[setOfMonsters[z]][1]] == steps-1) {
+			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
+			mapData[setOfMonsters[z][0]] -= 1;
+			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
+		} else if (sampleMap[mapData[setOfMonsters[z]][0]][mapData[setOfMonsters[z]][1] + 1] == steps-1) {
+			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
+			mapData[setOfMonsters[z][1]] += 1;
+			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
+		} else if (sampleMap[mapData[setOfMonsters[z]][0]][mapData[setOfMonsters[z]][1] - 1] == steps-1) {
+			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
+			mapData[setOfMonsters[z][1]] -= 1;
+			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
+		}
+	}
 }
 
 function movePlayer(keyPressed){
