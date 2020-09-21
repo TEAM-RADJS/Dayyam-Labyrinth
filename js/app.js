@@ -8,7 +8,7 @@ function makeNewMaze(){
 
 function showEnvironment(){
 	function showTable(increments){
-		//TODO: create a variable called checkPosition and assign it the value of mapData['map'][(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]]
+		var checkPosition = mapData['map'][(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]]
 		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
 	}
 	//TODO: write a for loop to iterate over all image id's and assign the empty image source
