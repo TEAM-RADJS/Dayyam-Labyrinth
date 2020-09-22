@@ -11,7 +11,6 @@ function gameOver(){
 const WALL = 0;
 const FLOOR = 1;
 const SAFE = 2;
-const MONSTER = 4;
 
 function makeNewMaze(){
 	//Robert TODO: build a process by which a new array of arrays is created with the proper lengths, and to ensure that there IS a path to the end
