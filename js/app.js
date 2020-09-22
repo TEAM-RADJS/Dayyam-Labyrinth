@@ -222,7 +222,7 @@ function showEnvironment(){
 				if (map[curY-1][curX-1] != 0){
 					if (curY != 1){
 						show([-2, -1]);
-						if (map[curY-2][curX-1] != 0 and curX != 2){
+						if (map[curY-2][curX-1] != 0 && curX != 2){
 							if (curX != 1){
 								show([-2, -2]);
 							}
@@ -250,13 +250,13 @@ function showEnvironment(){
 				if (map[curY][curX-2] != 0){
 					if (curY != lastRow){
 						show([1, -2]);
-						if (map[curY+1][curX-2] != 0 and curX != 3){
+						if (map[curY+1][curX-2] != 0 && curX != 3){
 							show([1, -3]);
 						}
 					}
 					if (curY != 0){	
 						show([-1, -2]);
-						if (map[curY-1][curX-2] != 0 and curX != 3){
+						if (map[curY-1][curX-2] != 0 && curX != 3){
 							show([-1, -3]);
 						}
 					}
@@ -329,7 +329,7 @@ function showEnvironment(){
 					}
 					if (curX != lastCol-1){
 						show([-1, 2]);
-						if (map[curY-1][curX+2] != 0 and curY != 1){
+						if (map[curY-1][curX+2] != 0 && curY != 1){
 							show([-2, 2]);
 						}
 					}
@@ -342,13 +342,13 @@ function showEnvironment(){
 					if (curY != lastRow){
 						show([1, 2]);
 
-						if (map[curY+1][curX+2] != 0 and curX != lastCol-2){
+						if (map[curY+1][curX+2] != 0 && curX != lastCol-2){
 							show([1, 3]);
 						}
 					}
 					if (curY != 0){	
 						show([-1, 2]);
-						if (map[curY-1][curX+2] != 0 and curX != lastCol-2){
+						if (map[curY-1][curX+2] != 0 && curX != lastCol-2){
 							show([-1, 3]);
 						}
 					}
@@ -392,7 +392,7 @@ function showEnvironment(){
 					}
 					if (curY != 1){
 						show([-2, 1]);
-						if (map[curY-2][curX+1] != 0 and curX != lastCol-1){
+						if (map[curY-2][curX+1] != 0 && curX != lastCol-1){
 							show([-2, 2]);
 						}
 					}
@@ -404,7 +404,7 @@ function showEnvironment(){
 				if (map[curY-1][curX-1] != 0){
 					if (curY != 1){
 						show([-2, -1]);
-						if (map[curY-2][curX-1] != 0 and curX != 2){
+						if (map[curY-2][curX-1] != 0 && curX != 2){
 							show([-2, -2]);
 						}
 					}
@@ -428,13 +428,13 @@ function showEnvironment(){
 					if (curX != lastCol){
 						show([-2, 1]);
 
-						if (map[curY-2][curX+1] != 0 and curY != 2){
+						if (map[curY-2][curX+1] != 0 && curY != 2){
 							show([-3, 1]);
 						}
 					}
 					if (curX != 0){	
 						show([-2, -1]);
-						if (map[curY-2][curX-1] != 0 and curY != 2){
+						if (map[curY-2][curX-1] != 0 && curY != 2){
 							show([-3, -1]);
 						}
 					}
@@ -479,7 +479,7 @@ function showEnvironment(){
 					if (curY != lastRow-1){
 						show([2, 1]);
 
-						if (map[curY+2][curX+1] != 0 and curX != lastCol-1){
+						if (map[curY+2][curX+1] != 0 && curX != lastCol-1){
 							show([2, 2]);
 						}
 					}
@@ -491,14 +491,14 @@ function showEnvironment(){
 				if (map[curY+1][curX-1] != 0){
 					if (curY != lastRow-1){
 						show([2, -1]);
-						if (map[curY+2][curX-1] != 0 and curX != 2){
+						if (map[curY+2][curX-1] != 0 && curX != 2){
 							show([2, -2]);
 						}
 					}
 					if (curX != 1){
 						show([1, -2]);
 
-						if (map[curY+1][curX-2] != 0 and curY != lastRow-1){
+						if (map[curY+1][curX-2] != 0 && curY != lastRow-1){
 							if (curY != lastRow-1){
 								show([2, -2]);
 							}
@@ -516,14 +516,14 @@ function showEnvironment(){
 					if (curX != lastCol){
 						show([2, 1]);
 
-						if (map[curY+2][curX+1] != 0 and curY != lastRow-2){
+						if (map[curY+2][curX+1] != 0 && curY != lastRow-2){
 							show([3, 1]);
 						}
 					}
 					if (curX != 0){	
 						show([2, -1]);
 
-						if (map[curY+2][curX-1] != 0 and curY != lastRow-2){
+						if (map[curY+2][curX-1] != 0 && curY != lastRow-2){
 							show([3, -1]);
 						}
 					}
@@ -699,9 +699,9 @@ function startGame(){
 	//TODO: write a loop to iterate over mapData['map'] and create a 'tr' element for each inner array, and then in a nested for loop a 'td' for each index inside of that array, and assign that td the innerHTML of an 'img' element. Assign the image  an id of String(i)+'-'+String(j)
 	showEnvironment();
 	document.addEventListener("keyup", function(e){
-		e.preventDefault(); 
+		e.preventDefault();
 		movePlayer(e.key);
-	})
+	});
 }
 
 //TODO: identify #startButton element and attach an eventListener; eventListener will launch startGame 

@@ -18,5 +18,11 @@
 	        </form>
         </div>
     </body>
-    <script src='js/app.js'></script>
+    <script src='js/app.js'>
+        var startButton = document.getElementById('formsHere');
+        startButton.addEventListner('submit', function(e){
+            e.preventDefault();
+            startGame();
+        });
+    </script>
 </html>
