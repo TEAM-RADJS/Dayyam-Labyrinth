@@ -4,10 +4,17 @@ mapData = {};
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
 	//Thoughts here?
+<<<<<<< HEAD
 	var theTable = document.getElementById('containerDiv');
 	 theTable.textContent = '';
 	 theTable.setAttribute('background-image', 'url(assets/img/trapped_person.jpeg)');
 
+=======
+	var theTable = document.getElementById('containerDiv')
+	theTable.innerHTML = '';
+	theTable.setAttribute('background-image', 'url(assets/img/trapped person.jpeg)');
+	var gameOverText = document.createElment('')
+>>>>>>> 884bc6c319aa21dc6c28eff6f4bc363367624f7a
 }
 
 /* May we add comments throughout this code project? */
@@ -25,10 +32,9 @@ const WALL = 0;
 const FLOOR = 1;
 const SAFE = 2;
 
-function makeNewMaze(){
+function makeNewMaze(mapSize){
 	//Robert TODO: build a process by which a new array of arrays is created with the proper lengths, and to ensure that there IS a path to the end
 	//Robert TODO: assign mapData these key value pairs {map: [ [], [], [], [] ],  playerPosition: [y, x], mosterNOrigin: [y, x]}
-	var mapSize = 50;
 	var mapMargin = mapSize / 3;
 
 	mapData.map = [];
@@ -158,7 +164,6 @@ function makeNewMaze(){
 					} else if (madeAStep%20 == 0){
 						mapData.map[curY][curX] = SAFE;
 					}
-
 				}
 				triedToStep = 0;
 			}
@@ -755,10 +760,6 @@ function startGame(){
 		e.preventDefault();
 		movePlayer(e.key);
 	});
-<<<<<<< HEAD
+
 }
 
-//DONE: identify #startButton element and attach an eventListener; eventListener will launch startGame 
-=======
-}
->>>>>>> c119bc14cc4526dc1293bd9522c3fee319e35803
