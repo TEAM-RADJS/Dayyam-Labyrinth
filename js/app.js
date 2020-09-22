@@ -714,8 +714,8 @@ function startGame(){
 	makeNewMaze(mapSize);
 	//TODO: use DOM to start audio
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
-	var gameTable = document.getElementById("gamePlayTable").textContent;
-	document.getElementById("gamePlayTable").textcontent += gameTable;
+	var gameTable = document.getElementById("gamePlayTable").innerHTML;
+	document.getElementById("gamePlayTable").innerHTML += gameTable;
 	//TODO: write a loop to iterate over mapData['map'] and create a 'tr' element for each inner array, and then in a nested for loop a 'td' for each index inside of that array, and assign that td the innerHTML of an 'img' element. Assign the image  an id of String(i)+'-'+String(j)
 	
 	showEnvironment();
