@@ -4,17 +4,12 @@ mapData = {};
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
 	//Thoughts here?
-<<<<<<< HEAD
-	var theTable = document.getElementById('containerDiv');
-	 theTable.textContent = '';
-	 theTable.setAttribute('background-image', 'url(assets/img/trapped_person.jpeg)');
-
-=======
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
 	theTable.setAttribute('background-image', 'url(assets/img/trapped person.jpeg)');
-	var gameOverText = document.createElment('')
->>>>>>> 884bc6c319aa21dc6c28eff6f4bc363367624f7a
+	var gameOverText = document.createElment('h1');
+	theTable.append(gameOverText);
+	gameOverText.textContent = 'You\'ve been captured!';
 }
 
 /* May we add comments throughout this code project? */
