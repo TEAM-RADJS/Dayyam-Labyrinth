@@ -3,16 +3,32 @@ mapData = {};
 
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
+<<<<<<< HEAD
 	//Thoughts here? //'trapped' image with simple message
 	var theTable = document.getElementById('containerDiv');
 	 theTable.innerHTML = 'Captured: Game Over';
 	 theTable.setAttribute('background-image', 'url(assets/img/trapped_person.jpeg)');
+=======
+	//Thoughts here?
+	var theTable = document.getElementById('containerDiv')
+	theTable.innerHTML = '';
+	theTable.setAttribute('style', 'background-image:url(assets/img/trapped_person.jpeg);');
+	var gameOverText = document.createElement('h1');
+	theTable.append(gameOverText);
+	gameOverText.textContent = 'You\'ve been captured!';
+>>>>>>> 4d945bcbf98dfcb85b752ad817e1e8ba23bab71d
 }
 
+function escapedScreen() {
+	var theTable = document.getElementById('containerDiv')
+	theTable.innerHTML = '';
+	theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
+	var gameOverText = document.createElement('h1');
+	theTable.append(gameOverText);
+	gameOverText.textContent = 'You escaped!';
+}
 
-
-/* May we comment throughout this code project? */
-
+ // May we add comments throughout this code project? yes :?
 
 
 const WALL = 0;
@@ -25,16 +41,19 @@ function makeNewMaze(mapSize){
 	var mapSize = 50;
 	var mapMargin = mapSize / 3;
 
-	mapData.map = [];
-
-	for (let i = 0; i < mapSize; i++) {
-		mapData.map.push([]);
-		for (let j = 0; j < mapSize; j++) {
-			mapData.map[i].push(0);
-		}
-	}
-
 	function generateMap(){
+
+		var monsterCount = 0;
+
+		mapData.map = [];
+		mapData.viewMap = [];
+
+		for (let i = 0; i < mapSize; i++) {
+			mapData.map.push([]);
+			for (let j = 0; j < mapSize; j++) {
+				mapData.map[i].push(0);
+			}
+		}
 
 		mapData.playerPosition = [];
 		mapData.playerPosition.push(Math.ceil(Math.random()*(mapSize-2*mapMargin)+mapMargin));
@@ -47,9 +66,9 @@ function makeNewMaze(mapSize){
 
 		var triedToStep = 0;
 		var madeAStep = 0;
-		var monsterCount = 0;
+		
 
-		do {
+		while((curY != 0 && curY != mapSize-1) && (curX != 0 && curX != mapSize-1)) {
 			var upRand = Math.random()*10;
 			var downRand = Math.random()*10;
 			var rightRand = Math.random()*10;
@@ -62,11 +81,9 @@ function makeNewMaze(mapSize){
 					madeAStep++;
 					curY-=1;
 					if (madeAStep%120 == 0){
-						monsterCount++;
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
-						eval('mapData.monster'+monsterCount+'Origin = []');
-						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
-						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
+						monsterCount+=1;
 					} else if (madeAStep%20 == 0){
 						mapData.map[curY][curX] = 2;
 					} else {
@@ -80,11 +97,9 @@ function makeNewMaze(mapSize){
 					madeAStep++;
 					curY+=1;
 					if (madeAStep%120 == 0){
-						monsterCount++;
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
-						eval('mapData.monster'+monsterCount+'Origin = []');
-						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
-						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
+						monsterCount+=1;
 					} else if (madeAStep%20 == 0){
 						mapData.map[curY][curX] = 2;
 					} else {
@@ -98,11 +113,9 @@ function makeNewMaze(mapSize){
 					madeAStep++;
 					curX+=1;
 					if (madeAStep%120 == 0){
-						monsterCount++;
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
-						eval('mapData.monster'+monsterCount+'Origin = []');
-						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
-						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
+						monsterCount+=1;
 					} else if (madeAStep%20 == 0){
 						mapData.map[curY][curX] = 2;
 					} else {
@@ -116,11 +129,9 @@ function makeNewMaze(mapSize){
 					madeAStep++;
 					curX-=1;
 					if (madeAStep%120 == 0){
-						monsterCount++;
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
-						eval('mapData.monster'+monsterCount+'Origin = []');
-						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
-						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
+						monsterCount+=1;
 					} else if (madeAStep%20 == 0){
 						mapData.map[curY][curX] = 2;
 					} else {
@@ -139,16 +150,14 @@ function makeNewMaze(mapSize){
 				} else {
 					curX--;
 				}
-				if (mapData.map[curY][curX] != 2 && mapData.map[curY][curX] != 4 && mapData.map[curY][curX] != 1 && madeAStep%20 != 0){
-					mapData.map[curY][curX] = 1;
+				if (mapData.map[curY][curX] != SAFE && String(mapData.map[curY][curX]).charAt(0) != '4' && mapData.map[curY][curX] != FLOOR && madeAStep%20 != 0){
+					mapData.map[curY][curX] = FLOOR;
 				} else {
 
 					if (madeAStep%120 == 0){
-						monsterCount++;
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
-						eval('mapData.monster'+monsterCount+'Origin = []');
-						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
-						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
+						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
+						monsterCount+=1;
 					} else if (madeAStep%20 == 0){
 						mapData.map[curY][curX] = 2;
 					}
@@ -156,7 +165,7 @@ function makeNewMaze(mapSize){
 				}
 				triedToStep = 0;
 			}
-		} while ((curY != 0 && curY != mapSize-1) && (curX != 0 && curX != mapSize-1));
+		}
 		return madeAStep;
 	}
 
@@ -169,21 +178,47 @@ function makeNewMaze(mapSize){
 			goodMap = true;
 		}
 	}
+
+	for (let i = 0; i < 9; i++) {
+		mapData.viewMap.push([]);
+		for (let j = 0; j < 9; j++) {
+			mapData.viewMap[i].push(0);
+		}
+	}
+
+	for (let i = 0; i < 9; i++) {
+		for (let j = 0; j < 9; j++) {
+			if (typeof(mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]) != 'undefined'){
+				mapData.viewMap[i].push((mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]));
+			} else {
+				mapData.viewMap[i].push(0);
+			}
+		}
+	}
+	console.log(mapData.playerPosition);
+	console.log(mapData.map);
 }
 
 function showEnvironment(){
 	function show(increments){
-		var checkPosition = mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]]
-		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
-		var tileImage = document.getElementById(String(mapData['playerPosition'][0]+increments[0])+'-'+String(mapData['playerPosition'][1]+increments[1]))
-		if (checkPosition == 1) {
-			tileImage.setAttribute('src', 'assets/floor.jpg');
-		} else if (checkPosition == 0) {
-			tileImage.setAttribute('src', 'assets/wall.jpg');
-		} else if (checkPosition == 2) {
-			tileImage.setAttribute('src', 'assets/safe.jpg');
+		if (typeof(mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]]) != 'undefined'){
+			var checkPosition = mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]];
 		} else {
-			tileImage.setAttribute('src', 'assets/monster.jpg');
+			var checkPosition = 'undefined';
+		}
+		
+		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
+		var tileImage = document.getElementById(String(4+increments[0])+'-'+String(4+increments[1]));
+		if (typeof(checkPosition)=='undefined') {
+			tileImage.setAttribute('src', 'assets/img/empty.jpg');
+		} else if (checkPosition == FLOOR) {
+			tileImage.setAttribute('src', 'assets/img/floor.jpg');
+		} else if (checkPosition == WALL) {
+			tileImage.setAttribute('src', 'assets/img/wall.jpg');
+		} else if (checkPosition == SAFE) {
+			tileImage.setAttribute('src', 'assets/img/safe.jpg');
+		} else {
+			tileImage.setAttribute('src', 'assets/img/monster.jpg');
 		}
 	}
 	var map = mapData.map;
@@ -564,12 +599,35 @@ function showEnvironment(){
 			}
 		}
 	}
+	var map = mapData.map;
+	var curY = mapData.playerPosition[0];
+	var curX = mapData.playerPosition[1];
+	var lastCol = mapData.map.length-1;
+	var lastRow = mapData.map[0].length-1;
+	//TODO: write a for loop to iterate over all image id's and assign the empty image source
+	for (let i = 0; i < mapData.viewMap.length; i++){
+		for (let j = 0; j < mapData.viewMap.length; j++){
+			var tileImage = document.getElementById(String(i)+'-'+String(j));
+			tileImage.setAttribute('src', 'assets/img/empty.jpg');
+		}
+	}
+	//Robert TODO: translate the printEnvironment function from Dungeon_Game into javaScript here
+	var selfTile = document.getElementById(String(4)+'-'+String(4));
+	selfTile.setAttribute('src', 'assets/img/self.jpg')
+
+	left();
+		
+	right();
+
+	up();
+			
+	down();
 }
 
 function hunterMove(){
 	//Robert TODO: translate aStar function from Dungeon_Game into javaScript here
 	var setOfMonsters = Object.keys(mapData);
-	setOfMonsters.splice(0, 2);
+	setOfMonsters.splice(0, 3);
 
 	for (let z = 0; z < setOfMonsters.length; z++) {
 		
@@ -577,95 +635,151 @@ function hunterMove(){
 
 		for (let i = 0; i < sampleMap.length; i++){
 			for (let j = 0; j < sampleMap[i].length; j++){
-				if (sampleMap[i][j] == 1){
-					sampleMap[i][j] == 'f';
+				if (sampleMap[i][j] == parseInt('4'+z)){
+					var monsterY = i;
+					var monsterX = j;
+				}
+				if (sampleMap[i][j] == FLOOR){
+					sampleMap[i][j] = 'f';
 				} else {
-					sampleMap[i][j] == 'w';
+					sampleMap[i][j] = 'w';
 				}
 			}
 		}
 
+		console.log(monsterY, monsterX);
+
 		var didSomething = true;
 		var steps = 0;
-		sampleMap[mapData.playerPosition[0]][mapData.playerPosition[1]] = steps;
+		var monsterDataAccess = eval('mapData.monster'+z+'Origin');
 
-		while (sampleMap[mapData[setOfMonsters[z]][0]][mapData[setOfMonsters[z]][1]] == "f") {
-			if (didSomething == false) {
-				break;
-			}
-			didSomething = false;
-			for (let i = 0; i < sampleMap.length; i++){
-				for (let j = 0; j < sampleMap[i].length; j++){
-					if (sampleMap[i][j] == steps){
-						if (i != 0){
-							if (sampleMap[i-1][j] == 'f'){
-								sampleMap[i-1][j] = steps+1;
-								didSomething = true;
+		if (mapData.map[mapData.playerPosition[0]][mapData.playerPosition[1]] == 2) {
+			
+			sampleMap[monsterY][monsterX] = 'f';
+			sampleMap[monsterDataAccess[0]][monsterDataAccess[1]] = steps;
+
+			while (sampleMap[monsterY][monsterX] == "f") {
+				if (didSomething == false) {
+					break;
+				}
+				didSomething = false;
+				for (let i = 0; i < sampleMap.length; i++){
+					for (let j = 0; j < sampleMap[i].length; j++){
+						if (sampleMap[i][j] == steps){
+							if (i != 0){
+								if (sampleMap[i-1][j] == 'f'){
+									sampleMap[i-1][j] = steps+1;
+									didSomething = true;
+								}
 							}
-						}
-						if (i != sampleMap.length-1){
-							if (sampleMap[i+1][j] == 'f'){
-								sampleMap[i+1][j] = steps+1;
-								didSomething = true;
+							if (i != sampleMap.length-1){
+								if (sampleMap[i+1][j] == 'f'){
+									sampleMap[i+1][j] = steps+1;
+									didSomething = true;
+								}
 							}
-						}
-						if (j != 0){
-							if (sampleMap[i][j-1] == 'f'){
-								sampleMap[i][j-1] = steps+1;
-								didSomething = true;
+							if (j != 0){
+								if (sampleMap[i][j-1] == 'f'){
+									sampleMap[i][j-1] = steps+1;
+									didSomething = true;
+								}
 							}
-						}
-						if (j != sampleMap[0].length-1){
-							if (sampleMap[i][j+1] == 'f'){
-								sampleMap[i][j+1] = steps+1;
-								didSomething = true;
+							if (j != sampleMap[0].length-1){
+								if (sampleMap[i][j+1] == 'f'){
+									sampleMap[i][j+1] = steps+1;
+									didSomething = true;
+								}
 							}
 						}
 					}
 				}
+				steps++;
 			}
-			steps++;
+
+		} else {
+
+			sampleMap[monsterY][monsterX] = 'f';
+			sampleMap[mapData.playerPosition[0]][mapData.playerPosition[1]] = steps;
+
+			while (sampleMap[monsterY][monsterX] == "f") {
+				if (didSomething == false) {
+					break;
+				}
+				didSomething = false;
+				for (let i = 0; i < sampleMap.length; i++){
+					for (let j = 0; j < sampleMap[i].length; j++){
+						if (sampleMap[i][j] == steps){
+							if (i != 0){
+								if (sampleMap[i-1][j] == 'f'){
+									sampleMap[i-1][j] = steps+1;
+									didSomething = true;
+								}
+							}
+							if (i != sampleMap.length-1){
+								if (sampleMap[i+1][j] == 'f'){
+									sampleMap[i+1][j] = steps+1;
+									didSomething = true;
+								}
+							}
+							if (j != 0){
+								if (sampleMap[i][j-1] == 'f'){
+									sampleMap[i][j-1] = steps+1;
+									didSomething = true;
+								}
+							}
+							if (j != sampleMap[0].length-1){
+								if (sampleMap[i][j+1] == 'f'){
+									sampleMap[i][j+1] = steps+1;
+									didSomething = true;
+								}
+							}
+						}
+					}
+				}
+				steps++;
+			}
+
 		}
-		if (sampleMap [mapData[setOfMonsters[z]][0] + 1][mapData[setOfMonsters[z]][1]] == steps-1){
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
-			mapData[setOfMonsters[z][0]] += 1;
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
-		} else if (sampleMap[mapData[setOfMonsters[z]][0] - 1][mapData[setOfMonsters[z]][1]] == steps-1) {
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
-			mapData[setOfMonsters[z][0]] -= 1;
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
-		} else if (sampleMap[mapData[setOfMonsters[z]][0]][mapData[setOfMonsters[z]][1] + 1] == steps-1) {
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
-			mapData[setOfMonsters[z][1]] += 1;
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
-		} else if (sampleMap[mapData[setOfMonsters[z]][0]][mapData[setOfMonsters[z]][1] - 1] == steps-1) {
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
-			mapData[setOfMonsters[z][1]] -= 1;
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
+
+		if (sampleMap[monsterY+1][monsterX] == steps-1){
+			mapData.map[monsterY][monsterX] = 1;
+			monsterY += 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
+		} else if (sampleMap[monsterY-1][monsterX] == steps-1) {
+			mapData.map[monsterY][monsterX] = 1;
+			monsterY -= 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
+		} else if (sampleMap[monsterY][monsterX+1] == steps-1) {
+			mapData.map[monsterY][monsterX] = 1;
+			monsterX += 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
+		} else if (sampleMap[monsterY][monsterX-1] == steps-1) {
+			mapData.map[monsterY][monsterX] = 1;
+			monsterX -= 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
 		}
-		if (mapData[setOfMonsters[z]] == mapData.playerPosition) {
-			// Game over ?
+		if (mapData.playerPosition[0] == monsterY && mapData.playerPosition[1] == monsterX) {
+			gameOver();
 		}
 	}
 }
 
 function movePlayer(keyPressed) {
 
-	var acceptedMoves = ['w', 'a', 's', 'd', 'space'];
+	console.log(keyPressed);
+	var acceptedMoves = ['w', 'a', 's', 'd', ' '];
 	var oldYPosition = mapData.playerPosition[0];
 	var oldXPosition = mapData.playerPosition[1];
 	var theMap = mapData.map;
-	var newYPosition;
-	var newXPosition;
 	
 	if (!acceptedMoves.includes(keyPressed)) {
 		return;
 	}
 
 	if (keyPressed === 'w') {
-		if(theMap[(oldYPosition)-1][(oldXPosition)] === 1 || theMap[(oldYPosition)-1][(oldXPosition)] === 2) {
-			newYPosition = oldYPosition - 1;
-		} else if (theMap[(oldYPosition)-1][(oldXPosition)] === 0) {
+		if (theMap[(oldYPosition)-1][(oldXPosition)] === FLOOR || theMap[(oldYPosition)-1][(oldXPosition)] === SAFE) { // is traversible
+			oldYPosition -= 1;
+		} else if (theMap[(oldYPosition)-1][(oldXPosition)] === WALL) {
 			return;
 		} else {
 			// TODO: Gameover screen ?
@@ -673,9 +787,9 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 's') {
-		if(theMap[(oldYPosition)+1][(oldXPosition)] === 1 || theMap[(oldYPosition)+1][(oldXPosition)] === 2) {
-			newYPosition = oldYPosition + 1;
-		}else if (theMap[(oldYPosition)+1][(oldXPosition)] === 0) {
+		if (theMap[(oldYPosition)+1][(oldXPosition)] === FLOOR || theMap[(oldYPosition)+1][(oldXPosition)] === SAFE) {
+			oldYPosition += 1;
+		} else if (theMap[(oldYPosition)+1][(oldXPosition)] === WALL) {
 			return;
 		} else {
 			// TODO: Gameover screen ?
@@ -683,9 +797,9 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 'a') {
-		if(theMap[(oldYPosition)][(oldXPosition)-1] === 1 || theMap[(oldYPosition)][(oldXPosition)-1] === 2) {
-			newYPosition = oldYPosition + 1;
-		}else if (theMap[(oldYPosition)][(oldXPosition-1)] === 0) {
+		if (theMap[(oldYPosition)][(oldXPosition)-1] === FLOOR || theMap[(oldYPosition)][(oldXPosition)-1] === SAFE) {
+			oldXPosition -= 1;
+		} else if (theMap[(oldYPosition)][(oldXPosition-1)] === WALL) {
 			return;
 		} else {
 			// TODO: Gameover screen ?
@@ -693,19 +807,37 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 'd') {
-		if(theMap[(oldYPosition)][(oldXPosition)+1] === 1 || theMap[(oldYPosition)][(oldXPosition)+1] === 2) {
-			newYPosition = oldYPosition + 1;
-		}else if (theMap[(oldYPosition)][(oldXPosition+1)] === 0) {
+		if (theMap[(oldYPosition)][(oldXPosition)+1] === FLOOR || theMap[(oldYPosition)][(oldXPosition)+1] === SAFE) {
+			oldXPosition += 1;
+		} else if (theMap[(oldYPosition)][(oldXPosition+1)] === WALL) {
 			return;
 		} else {
 			// TODO: Gameover screen ?
 		}
 	}
 
-	mapData.playerPosition[0] = newYPosition;
-	mapData.playerPosition[1] = newXPosition;
+	mapData.playerPosition[0] = oldYPosition;
+	mapData.playerPosition[1] = oldXPosition;
+
+	if (mapData.playerPosition[0] == 0 || mapData.playerPosition[0] == mapData.map.length || mapData.playerPosition[1] == 0 || mapData.playerPosition[1] == mapData.map.length){
+		escapedScreen();
+	}
 
 	hunterMove();
+
+	mapData.viewMap = [];
+
+	for (let i = 0; i < 9; i++) {
+		mapData.viewMap.push([]);
+		for (let j = 0; j < 9; j++) {
+			if (typeof(mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]) != 'undefined'){
+				mapData.viewMap[i].push((mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]));
+			} else {
+				mapData.viewMap[i].push(0);
+			}	
+		}
+	}
+
 	showEnvironment();
 }
 
@@ -713,11 +845,21 @@ function startGame(){
 	//DONE: create a variable mapSize and assign it the value of the '#askSize' input form
 	makeNewMaze(mapSize);
 	//TODO: use DOM to start audio
-	//DONE: Use DOM to identify #gamePlayTable and assign it to a variable
-	var gameTable = document.getElementById("gamePlayTable").innerHTML;
-	document.getElementById("gamePlayTable").innerHTML += gameTable;
-	//DONE: write a loop to iterate over mapData['map'] and create a 'tr' element for each inner array, and then in a nested for loop a 'td' for each index inside of that array, and assign that td the innerHTML of an 'img' element. Assign the image  an id of String(i)+'-'+String(j)
-	
+	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
+	var gameTable = document.createElement('table');
+	containerDiv.append(gameTable);
+	//TODO: write a loop to iterate over mapData['map'] and create a 'tr' element for each inner array, and then in a nested for loop a 'td' for each index inside of that array, and assign that td the innerHTML of an 'img' element. Assign the image  an id of String(i)+'-'+String(j)
+	for (let i = 0; i < 9; i++) {
+		var newRow = document.createElement('tr');
+		gameTable.append(newRow);
+		for(let j = 0; j < 9; j++){
+			var newCell = document.createElement('td');
+			newRow.append(newCell);
+			var newImage = document.createElement('img');
+			newCell.append(newImage);
+			newImage.setAttribute('id', String(i)+'-'+String(j));
+		}
+	}
 	showEnvironment();
 	document.addEventListener("keyup", function(e){
 		e.preventDefault();
@@ -725,3 +867,10 @@ function startGame(){
 	});
 }
 
+// Inline code relocated from script tag in game.html
+var startButton = document.getElementById('formsHere'); 
+// starts the game when a submit takes place (startButton clicked)
+startButton.addEventListener('submit', function (e) {
+	e.preventDefault();
+	startGame();
+});
