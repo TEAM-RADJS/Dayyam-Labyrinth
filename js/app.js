@@ -805,7 +805,7 @@ function movePlayer(keyPressed) {
 	mapData.playerPosition[0] = oldYPosition;
 	mapData.playerPosition[1] = oldXPosition;
 
-	if (mapData.playerPosition[0] == 0 || mapData.playerPosition[0] == mapData.map.length || mapData.playerPosition[1] == 0 || mapData.playerPosition[1] == mapData.map.length){
+	if (mapData.playerPosition[0] == 0 || mapData.playerPosition[0] == mapData.map.length-1 || mapData.playerPosition[1] == 0 || mapData.playerPosition[1] == mapData.map.length-1){
 		escapedScreen();
 	}
 
