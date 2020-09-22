@@ -1,6 +1,11 @@
 //javascript
 mapData = {};
 
+function gameOver(){
+	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
+}
+
+
 function makeNewMaze(){
 	//Robert TODO: build a process by which a new array of arrays is created with the proper lengths, and to ensure that there IS a path to the end
 	//Robert TODO: assign mapData these key value pairs {map: [ [], [], [], [] ],  playerPosition: [y, x], mosterNOrigin: [y, x]}
@@ -629,7 +634,7 @@ function hunterMove(){
 			mapData.map[monsterY][monsterX] = parseInt('4'+z);
 		}
 		if (mapData[setOfMonsters[z]] == mapData.playerPosition) {
-			// Game over ?
+			gameOver();
 		}
 	}
 }
@@ -653,7 +658,7 @@ function movePlayer(keyPressed) {
 		} else if (theMap[(oldYPosition)-1][(oldXPosition)] === 0) {
 			return;
 		} else {
-			// TODO: Gameover screen ?
+			gameOver();
 		}
 	}
 
@@ -663,7 +668,7 @@ function movePlayer(keyPressed) {
 		} else if (theMap[(oldYPosition)+1][(oldXPosition)] === 0) {
 			return;
 		} else {
-			// TODO: Gameover screen ?
+			gameOver();
 		}
 	}
 
@@ -673,7 +678,7 @@ function movePlayer(keyPressed) {
 		} else if (theMap[(oldYPosition)][(oldXPosition-1)] === 0) {
 			return;
 		} else {
-			// TODO: Gameover screen ?
+			gameOver();
 		}
 	}
 
@@ -683,7 +688,7 @@ function movePlayer(keyPressed) {
 		} else if (theMap[(oldYPosition)][(oldXPosition+1)] === 0) {
 			return;
 		} else {
-			// TODO: Gameover screen ?
+			gameOver();
 		}
 	}
 
