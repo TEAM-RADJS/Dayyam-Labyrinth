@@ -213,6 +213,7 @@ function showEnvironment(){
 							if (curY != lastRow-1){
 								show([2, -2]);
 							}
+						}
 					}
 				}				
 			}
@@ -569,9 +570,11 @@ function hunterMove(){
 
 		var didSomething = true;
 		var steps = 0;
+		var monsterY = mapData[setOfMonsters[z]][0];
+		var monsterX = mapData[setOfMonsters[z]][0];
 		sampleMap[mapData.playerPosition[0]][mapData.playerPosition[1]] = steps;
 
-		while (sampleMap[mapData[setOfMonsters[z]][0]][mapData[setOfMonsters[z]][1]] == "f") {
+		while (sampleMap[monsterY][monsterX] == "f") {
 			if (didSomething == false) {
 				break;
 			}
@@ -608,22 +611,22 @@ function hunterMove(){
 			}
 			steps++;
 		}
-		if (sampleMap [mapData[setOfMonsters[z]][0] + 1][mapData[setOfMonsters[z]][1]] == steps-1){
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
-			mapData[setOfMonsters[z][0]] += 1;
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
-		} else if (sampleMap[mapData[setOfMonsters[z]][0] - 1][mapData[setOfMonsters[z]][1]] == steps-1) {
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
-			mapData[setOfMonsters[z][0]] -= 1;
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
-		} else if (sampleMap[mapData[setOfMonsters[z]][0]][mapData[setOfMonsters[z]][1] + 1] == steps-1) {
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
-			mapData[setOfMonsters[z][1]] += 1;
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
-		} else if (sampleMap[mapData[setOfMonsters[z]][0]][mapData[setOfMonsters[z]][1] - 1] == steps-1) {
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = 1;
-			mapData[setOfMonsters[z][1]] -= 1;
-			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
+		if (sampleMap[monsterY+1][monsterX] == steps-1){
+			mapData.map[monsterY][monsterX] = 1;
+			monsterY += 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
+		} else if (sampleMap[monsterY-1][monsterX] == steps-1) {
+			mapData.map[monsterY][monsterX] = 1;
+			monsterY -= 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
+		} else if (sampleMap[monsterY][monsterX+1] == steps-1) {
+			mapData.map[monsterY][monsterX] = 1;
+			monsterX += 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
+		} else if (sampleMap[monsterY][monsterX-1] == steps-1) {
+			mapData.map[monsterY][monsterX] = 1;
+			monsterX -= 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
 		}
 		if (mapData[setOfMonsters[z]] == mapData.playerPosition) {
 			// Game over ?
@@ -645,7 +648,7 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 'w') {
-		if(theMap[(oldYPosition)-1][(oldXPosition)] === 1 || theMap[(oldYPosition)-1][(oldXPosition)] === 2) {
+		if (theMap[(oldYPosition)-1][(oldXPosition)] === 1 || theMap[(oldYPosition)-1][(oldXPosition)] === 2) {
 			newYPosition = oldYPosition - 1;
 		} else if (theMap[(oldYPosition)-1][(oldXPosition)] === 0) {
 			return;
@@ -655,9 +658,9 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 's') {
-		if(theMap[(oldYPosition)+1][(oldXPosition)] === 1 || theMap[(oldYPosition)+1][(oldXPosition)] === 2) {
+		if (theMap[(oldYPosition)+1][(oldXPosition)] === 1 || theMap[(oldYPosition)+1][(oldXPosition)] === 2) {
 			newYPosition = oldYPosition + 1;
-		}else if (theMap[(oldYPosition)+1][(oldXPosition)] === 0) {
+		} else if (theMap[(oldYPosition)+1][(oldXPosition)] === 0) {
 			return;
 		} else {
 			// TODO: Gameover screen ?
@@ -665,9 +668,9 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 'a') {
-		if(theMap[(oldYPosition)][(oldXPosition)-1] === 1 || theMap[(oldYPosition)][(oldXPosition)-1] === 2) {
+		if (theMap[(oldYPosition)][(oldXPosition)-1] === 1 || theMap[(oldYPosition)][(oldXPosition)-1] === 2) {
 			newYPosition = oldYPosition + 1;
-		}else if (theMap[(oldYPosition)][(oldXPosition-1)] === 0) {
+		} else if (theMap[(oldYPosition)][(oldXPosition-1)] === 0) {
 			return;
 		} else {
 			// TODO: Gameover screen ?
@@ -675,9 +678,9 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 'd') {
-		if(theMap[(oldYPosition)][(oldXPosition)+1] === 1 || theMap[(oldYPosition)][(oldXPosition)+1] === 2) {
+		if (theMap[(oldYPosition)][(oldXPosition)+1] === 1 || theMap[(oldYPosition)][(oldXPosition)+1] === 2) {
 			newYPosition = oldYPosition + 1;
-		}else if (theMap[(oldYPosition)][(oldXPosition+1)] === 0) {
+		} else if (theMap[(oldYPosition)][(oldXPosition+1)] === 0) {
 			return;
 		} else {
 			// TODO: Gameover screen ?
@@ -692,7 +695,8 @@ function movePlayer(keyPressed) {
 }
 
 function startGame(){
-	//TODO: create a variable mapSize and assign it the value of the '#askSize' input form
+	var askSize = document.getElementById('askSize');
+	var mapSize = askSize.value;
 	makeNewMaze(mapSize);
 	//TODO: use DOM to start audio
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
@@ -703,5 +707,3 @@ function startGame(){
 		movePlayer(e.key);
 	});
 }
-
-//TODO: identify #startButton element and attach an eventListener; eventListener will launch startGame 
