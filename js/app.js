@@ -5,7 +5,7 @@ function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
 	//Thoughts here? //'trapped' image with simple message
 	var theTable = document.getElementById('containerDiv');
-	 theTable.innerHTML = 'You are Doomed Game Over';
+	 theTable.innerHTML = 'Captured: Game Over';
 	 theTable.setAttribute('background-image', 'url(assets/img/trapped_person.jpeg)');
 }
 
