@@ -1,7 +1,6 @@
 //javascript
 mapData = {};
 
-<<<<<<< Updated upstream
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
 	//Thoughts here?
@@ -9,12 +8,10 @@ function gameOver(){
 	//TODO: set #containerDiv.setAttribute('backgound-image', 'url(assets/captured.jpg)')
 }
 
-=======
-var WALL = 0;
-var FLOOR = 1;
-var SAFE = 2;
-var MONSTER = 4;
->>>>>>> Stashed changes
+const WALL = 0;
+const FLOOR = 1;
+const SAFE = 2;
+const MONSTER = 4;
 
 function makeNewMaze(){
 	//Robert TODO: build a process by which a new array of arrays is created with the proper lengths, and to ensure that there IS a path to the end
@@ -37,7 +34,7 @@ function makeNewMaze(){
 		mapData.playerPosition.push(Math.ceil(Math.random()*(mapSize-2*mapMargin)+mapMargin));
 		mapData.playerPosition.push(Math.ceil(Math.random()*(mapSize-2*mapMargin)+mapMargin));
 
-		mapData.map[mapData.playerPosition[0]][mapData.playerPosition[1]] = 1;
+		mapData.map[mapData.playerPosition[0]][mapData.playerPosition[1]] = FLOOR;
 
 		curY = mapData.playerPosition[0];
 		curX = mapData.playerPosition[1];
@@ -54,7 +51,7 @@ function makeNewMaze(){
 
 			if (upRand > downRand && upRand > rightRand && upRand > leftRand) {
 				triedToStep++;
-				if (mapData.map[curY-1][curX] == 0 && (mapData.map[curY-1][curX+1] != 1 || mapData.map[curY-1][curX-1] != 1)){
+				if (mapData.map[curY-1][curX] == WALL && (mapData.map[curY-1][curX+1] != FLOOR || mapData.map[curY-1][curX-1] != FLOOR)){
 					triedToStep = 0;
 					madeAStep++;
 					curY-=1;
@@ -65,14 +62,14 @@ function makeNewMaze(){
 						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
 						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
 					} else if (madeAStep%20 == 0){
-						mapData.map[curY][curX] = 2;
+						mapData.map[curY][curX] = SAFE;
 					} else {
-						mapData.map[curY][curX] = 1;
+						mapData.map[curY][curX] = FLOOR;
 					}
 				}
 			} else if (downRand > rightRand && downRand > leftRand) {
 				triedToStep++;
-				if (mapData.map[curY+1][curX] == 0 && (mapData.map[curY+1][curX+1] != 1 || mapData.map[curY+1][curX-1] != 1)){
+				if (mapData.map[curY+1][curX] == WALL && (mapData.map[curY+1][curX+1] != FLOOR || mapData.map[curY+1][curX-1] != FLOOR)){
 					triedToStep = 0;
 					madeAStep++;
 					curY+=1;
@@ -83,14 +80,14 @@ function makeNewMaze(){
 						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
 						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
 					} else if (madeAStep%20 == 0){
-						mapData.map[curY][curX] = 2;
+						mapData.map[curY][curX] = SAFE;
 					} else {
-						mapData.map[curY][curX] = 1;
+						mapData.map[curY][curX] = FLOOR;
 					}
 				}
 			} else if (rightRand > leftRand) {
 				triedToStep++;
-				if (mapData.map[curY][curX+1] == 0 && (mapData.map[curY+1][curX+1] != 1 || mapData.map[curY-1][curX+1] != 1)){
+				if (mapData.map[curY][curX+1] == WALL && (mapData.map[curY+1][curX+1] != FLOOR || mapData.map[curY-1][curX+1] != FLOOR)){
 					triedToStep = 0;
 					madeAStep++;
 					curX+=1;
@@ -101,14 +98,14 @@ function makeNewMaze(){
 						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
 						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
 					} else if (madeAStep%20 == 0){
-						mapData.map[curY][curX] = 2;
+						mapData.map[curY][curX] = SAFE;
 					} else {
-						mapData.map[curY][curX] = 1;
+						mapData.map[curY][curX] = FLOOR;
 					}
 				}
 			} else {
 				triedToStep++;
-				if (mapData.map[curY][curX-1] == 0 && (mapData.map[curY+1][curX-1] != 1 || mapData.map[curY-1][curX-1] != 1)){
+				if (mapData.map[curY][curX-1] == WALL && (mapData.map[curY+1][curX-1] != FLOOR || mapData.map[curY-1][curX-1] != FLOOR)){
 					triedToStep = 0;
 					madeAStep++;
 					curX-=1;
@@ -119,9 +116,9 @@ function makeNewMaze(){
 						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
 						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
 					} else if (madeAStep%20 == 0){
-						mapData.map[curY][curX] = 2;
+						mapData.map[curY][curX] = SAFE;
 					} else {
-						mapData.map[curY][curX] = 1;
+						mapData.map[curY][curX] = FLOOR;
 					}
 				}
 			} 
@@ -136,8 +133,8 @@ function makeNewMaze(){
 				} else {
 					curX--;
 				}
-				if (mapData.map[curY][curX] != 2 && mapData.map[curY][curX] != 4 && mapData.map[curY][curX] != 1 && madeAStep%20 != 0){
-					mapData.map[curY][curX] = 1;
+				if (mapData.map[curY][curX] != SAFE && mapData.map[curY][curX] != 4 && mapData.map[curY][curX] != FLOOR && madeAStep%20 != 0){
+					mapData.map[curY][curX] = FLOOR;
 				} else {
 
 					if (madeAStep%120 == 0){
@@ -147,7 +144,7 @@ function makeNewMaze(){
 						eval('mapData.monster'+monsterCount+'Origin.push(curY)');
 						eval('mapData.monster'+monsterCount+'Origin.push(curX)');
 					} else if (madeAStep%20 == 0){
-						mapData.map[curY][curX] = 2;
+						mapData.map[curY][curX] = SAFE;
 					}
 
 				}
@@ -173,11 +170,11 @@ function showEnvironment(){
 		var checkPosition = mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]]
 		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
 		var tileImage = document.getElementById(String(mapData['playerPosition'][0]+increments[0])+'-'+String(mapData['playerPosition'][1]+increments[1]))
-		if (checkPosition == 1) {
+		if (checkPosition == FLOOR) {
 			tileImage.setAttribute('src', 'assets/floor.jpg');
-		} else if (checkPosition == 0) {
+		} else if (checkPosition == WALL) {
 			tileImage.setAttribute('src', 'assets/wall.jpg');
-		} else if (checkPosition == 2) {
+		} else if (checkPosition == SAFE) {
 			tileImage.setAttribute('src', 'assets/safe.jpg');
 		} else {
 			tileImage.setAttribute('src', 'assets/monster.jpg');
@@ -201,15 +198,15 @@ function showEnvironment(){
 
 	if (curX != 0){
 		show([0, -1]);
-		if (map[curY][curX-1] != 0){
+		if (map[curY][curX-1] != WALL){
 			if (curY != lastRow){
 				show([1, -1]);
 
-				if (map[curY+1][curX-1] != 0){
+				if (map[curY+1][curX-1] != WALL){
 					if (curY != lastRow-1){
 						show([2, -1]);
 						
-						if (map[curY+2][curX-1] != 0){
+						if (map[curY+2][curX-1] != WALL){
 							if (curX != 1){
 								show([2, -2]);
 							}
@@ -221,7 +218,7 @@ function showEnvironment(){
 					if (curX != 1){
 						show([1, -2]);
 						
-						if (map[curY+1][curX-2] != 0){
+						if (map[curY+1][curX-2] != WALL){
 							if (curX != 2){
 								show([1, -3]);
 							}
@@ -235,10 +232,10 @@ function showEnvironment(){
 			if (curY != 0){	
 				show([-1, -1]);
 				
-				if (map[curY-1][curX-1] != 0){
+				if (map[curY-1][curX-1] != WALL){
 					if (curY != 1){
 						show([-2, -1]);
-						if (map[curY-2][curX-1] != 0 && curX != 2){
+						if (map[curY-2][curX-1] != WALL && curX != 2){
 							if (curX != 1){
 								show([-2, -2]);
 							}
@@ -249,7 +246,7 @@ function showEnvironment(){
 					}
 					if (curX != 1){
 						show([-1, -2]);
-						if (map[curY-1][curX-2] != 0){
+						if (map[curY-1][curX-2] != WALL){
 							if (curY != 1){
 								show([-2, -2]);
 							}
@@ -266,19 +263,19 @@ function showEnvironment(){
 				if (map[curY][curX-2] != 0){
 					if (curY != lastRow){
 						show([1, -2]);
-						if (map[curY+1][curX-2] != 0 && curX != 3){
+						if (map[curY+1][curX-2] != WALL && curX != 3){
 							show([1, -3]);
 						}
 					}
 					if (curY != 0){	
 						show([-1, -2]);
-						if (map[curY-1][curX-2] != 0 && curX != 3){
+						if (map[curY-1][curX-2] != WALL && curX != 3){
 							show([-1, -3]);
 						}
 					}
 					if (curX != 2){
 						show([0, -3]);
-						if (map[curY][curX-3] != 0){
+						if (map[curY][curX-3] != WALL){
 							if (curY != lastRow){
 								show([1, -3]);
 							}
@@ -297,15 +294,15 @@ function showEnvironment(){
 	if (curX != lastCol){
 		show([0, 1]);
 
-		if (map[curY][curX+1] != 0){
+		if (map[curY][curX+1] != WALL){
 			if (curY != lastRow){
 				show([1, 1]);
 
-				if (map[curY+1][curX+1] != 0){
+				if (map[curY+1][curX+1] != WALL){
 					if (curY != lastRow-1){
 						show([2, 1]);
 
-						if (map[curY+2][curX+1] != 0){
+						if (map[curY+2][curX+1] != WALL){
 							if (curX != lastCol-1){
 								show([2, 2]);
 							}
@@ -316,7 +313,7 @@ function showEnvironment(){
 					}
 					if (curX != lastCol-1){
 						show([1, 2]);
-						if (map[curY+1][curX+2] != 0){
+						if (map[curY+1][curX+2] != WALL){
 							if (curX != lastCol-2){
 								show([1, 3]);
 							}
@@ -330,11 +327,11 @@ function showEnvironment(){
 			if (curY != 0){	
 				show([-1, 1]);
 
-				if (map[curY-1][curX+1] != 0){
+				if (map[curY-1][curX+1] != WALL){
 					if (curY != 1){
 						show([-2, 1]);
 
-						if (map[curY-2][curX+1] != 0){
+						if (map[curY-2][curX+1] != WALL){
 							if (curX != lastCol-1){
 								show([-2, 2]);
 							}
@@ -345,7 +342,7 @@ function showEnvironment(){
 					}
 					if (curX != lastCol-1){
 						show([-1, 2]);
-						if (map[curY-1][curX+2] != 0 && curY != 1){
+						if (map[curY-1][curX+2] != WALL && curY != 1){
 							show([-2, 2]);
 						}
 					}
@@ -358,19 +355,19 @@ function showEnvironment(){
 					if (curY != lastRow){
 						show([1, 2]);
 
-						if (map[curY+1][curX+2] != 0 && curX != lastCol-2){
+						if (map[curY+1][curX+2] != WALL && curX != lastCol-2){
 							show([1, 3]);
 						}
 					}
 					if (curY != 0){	
 						show([-1, 2]);
-						if (map[curY-1][curX+2] != 0 && curX != lastCol-2){
+						if (map[curY-1][curX+2] != WALL && curX != lastCol-2){
 							show([-1, 3]);
 						}
 					}
 					if (curX != lastCol-2){
 						show([0, 3]);
-						if (map[curY][curX+3] != 0){
+						if (map[curY][curX+3] != WALL){
 							if (curY != lastRow){
 								show([1, 3]);
 							}
@@ -389,15 +386,15 @@ function showEnvironment(){
 	if (curY != 0){
 		show([-1, 0]);
 
-		if (map[curY-1][curX] != 0){
+		if (map[curY-1][curX] != WALL){
 			if (curX != lastCol){
 				show([-1, 1]);
 
-				if (map[curY-1][curX+1] != 0){
+				if (map[curY-1][curX+1] != WALL){
 					if (curX != lastCol-1){
 						show([-1, 2]);
 
-						if (map[curY-1][curX+2] != 0){
+						if (map[curY-1][curX+2] != WALL){
 							if (curY != 1){
 								show([-2, 2]);
 							}
@@ -408,7 +405,7 @@ function showEnvironment(){
 					}
 					if (curY != 1){
 						show([-2, 1]);
-						if (map[curY-2][curX+1] != 0 && curX != lastCol-1){
+						if (map[curY-2][curX+1] != WALL && curX != lastCol-1){
 							show([-2, 2]);
 						}
 					}
@@ -420,13 +417,13 @@ function showEnvironment(){
 				if (map[curY-1][curX-1] != 0){
 					if (curY != 1){
 						show([-2, -1]);
-						if (map[curY-2][curX-1] != 0 && curX != 2){
+						if (map[curY-2][curX-1] != WALL && curX != 2){
 							show([-2, -2]);
 						}
 					}
 					if (curX != 1){
 						show([-1, -2]);
-						if (map[curY-1][curX-2] != 0){
+						if (map[curY-1][curX-2] != WALL){
 							if (curY != 1){
 								show([-2, -2]);
 							}
@@ -440,23 +437,23 @@ function showEnvironment(){
 			if (curY != 1){
 				show([-2, 0]);
 
-				if (map[curY-2][curX] != 0){
+				if (map[curY-2][curX] != WALL){
 					if (curX != lastCol){
 						show([-2, 1]);
 
-						if (map[curY-2][curX+1] != 0 && curY != 2){
+						if (map[curY-2][curX+1] != WALL && curY != 2){
 							show([-3, 1]);
 						}
 					}
 					if (curX != 0){	
 						show([-2, -1]);
-						if (map[curY-2][curX-1] != 0 && curY != 2){
+						if (map[curY-2][curX-1] != WALL && curY != 2){
 							show([-3, -1]);
 						}
 					}
 					if (curY != 2){
 						show([-3, 0]);
-						if (map[curY-3][curX] != 0){
+						if (map[curY-3][curX] != WALL){
 							if (curX != lastCol){
 								show([-3, 1]);
 							}
@@ -475,15 +472,15 @@ function showEnvironment(){
 	if (curY != lastRow){
 		show([1, 0]);
 
-		if (map[curY+1][curX] != 0){
+		if (map[curY+1][curX] != WALL){
 			if (curX != lastCol){
 				show([1, 1]);
 
-				if (map[curY+1][curX+1] != 0){
+				if (map[curY+1][curX+1] != WALL){
 					if (curX != lastCol-1){
 						show([1, 2]);
 
-						if (map[curY+1][curX+2] != 0){
+						if (map[curY+1][curX+2] != WALL){
 							if (curY != lastRow-1){
 								show([2, 2]);
 							}
@@ -504,17 +501,17 @@ function showEnvironment(){
 			if (curX != 0){	
 				show([1, -1]);
 
-				if (map[curY+1][curX-1] != 0){
+				if (map[curY+1][curX-1] != WALL){
 					if (curY != lastRow-1){
 						show([2, -1]);
-						if (map[curY+2][curX-1] != 0 && curX != 2){
+						if (map[curY+2][curX-1] != WALL && curX != 2){
 							show([2, -2]);
 						}
 					}
 					if (curX != 1){
 						show([1, -2]);
 
-						if (map[curY+1][curX-2] != 0 && curY != lastRow-1){
+						if (map[curY+1][curX-2] != WALL && curY != lastRow-1){
 							if (curY != lastRow-1){
 								show([2, -2]);
 							}
@@ -528,25 +525,25 @@ function showEnvironment(){
 			if (curY != lastRow-1){
 				show([2, 0]);
 
-				if (map[curY+2][curX] != 0){
+				if (map[curY+2][curX] != WALL){
 					if (curX != lastCol){
 						show([2, 1]);
 
-						if (map[curY+2][curX+1] != 0 && curY != lastRow-2){
+						if (map[curY+2][curX+1] != WALL && curY != lastRow-2){
 							show([3, 1]);
 						}
 					}
 					if (curX != 0){	
 						show([2, -1]);
 
-						if (map[curY+2][curX-1] != 0 && curY != lastRow-2){
+						if (map[curY+2][curX-1] != WALL && curY != lastRow-2){
 							show([3, -1]);
 						}
 					}
 					if (curY != lastRow-2){
 						show([3, 0]);
 
-						if (map[curY+3][curX] != 0){
+						if (map[curY+3][curX] != WALL){
 							if (curX != lastCol){
 								show([3, 1]);
 							}
@@ -575,7 +572,7 @@ function hunterMove(){
 
 		for (let i = 0; i < sampleMap.length; i++){
 			for (let j = 0; j < sampleMap[i].length; j++){
-				if (sampleMap[i][j] == 1){
+				if (sampleMap[i][j] == FLOOR){
 					sampleMap[i][j] == 'f';
 				} else {
 					sampleMap[i][j] == 'w';
