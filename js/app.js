@@ -3,6 +3,9 @@ mapData = {};
 
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
+	//Thoughts here?
+	//TODO: set #containerDiv.innerHTML = '';
+	//TODO: set #containerDiv.setAttribute('backgound-image', 'url(assets/captured.jpg)')
 }
 
 
@@ -207,7 +210,7 @@ function showEnvironment(){
 								show([3, -1]);
 							}
 						}
-					}							
+					}
 					if (curX != 1){
 						show([1, -2]);
 						
@@ -220,7 +223,7 @@ function showEnvironment(){
 							}
 						}
 					}
-				}				
+				}
 			}
 			if (curY != 0){	
 				show([-1, -1]);
@@ -703,6 +706,8 @@ function startGame(){
 	var askSize = document.getElementById('askSize');
 	var mapSize = askSize.value;
 	makeNewMaze(mapSize);
+	var containerDiv = document.getElementById('containerDiv');
+	containerDiv.innerHTML = '';
 	//TODO: use DOM to start audio
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	//TODO: write a loop to iterate over mapData['map'] and create a 'tr' element for each inner array, and then in a nested for loop a 'td' for each index inside of that array, and assign that td the innerHTML of an 'img' element. Assign the image  an id of String(i)+'-'+String(j)
