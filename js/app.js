@@ -3,29 +3,16 @@ mapData = {};
 
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
-	//Thoughts here?
-<<<<<<< HEAD
+	//Thoughts here? //'trapped' image with simple message
 	var theTable = document.getElementById('containerDiv');
-	 theTable.textContent = '';
+	 theTable.innerHTML = 'You are Doomed Game Over';
 	 theTable.setAttribute('background-image', 'url(assets/img/trapped_person.jpeg)');
-
-=======
-	var theTable = document.getElementById('containerDiv')
-	theTable.innerHTML = '';
-	theTable.setAttribute('background-image', 'url(assets/img/trapped person.jpeg)');
-	var gameOverText = document.createElment('')
->>>>>>> 884bc6c319aa21dc6c28eff6f4bc363367624f7a
 }
 
-/* May we add comments throughout this code project? */
 
-// Inline code relocated from script tag in game.html
-var startButton = document.getElementById('formsHere'); 
-// starts the game when a submit takes place (startButton clicked)
-startButton.addEventListener('submit', function (e) {
-	e.preventDefault();
-	startGame();
-});
+
+/* May we comment throughout this code project? */
+
 
 
 const WALL = 0;
@@ -755,6 +742,7 @@ function startGame(){
 	//TODO: use DOM to start audio
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	//TODO: write a loop to iterate over mapData['map'] and create a 'tr' element for each inner array, and then in a nested for loop a 'td' for each index inside of that array, and assign that td the innerHTML of an 'img' element. Assign the image  an id of String(i)+'-'+String(j)
+	
 	showEnvironment();
 	document.addEventListener("keyup", function(e){
 		e.preventDefault();
@@ -762,4 +750,5 @@ function startGame(){
 	});
 
 }
+
 
