@@ -54,9 +54,15 @@ Acceptance tasks:
 - The start game form should also launch ambient music that loops
 
 --------------------------------------------------------------------------------------------
+ doraniccole-patch-5
+As an adventure enthusiast and aspiring web developer I am excited about collaborating in building a mind-teasing-puzzle with a bit of thrill 
+- dora blakey diana
 
-As an adventure enthusiast and aspiring web developer I am excited about collaborating in building a mind-teasing-puzzle with a bit of thrill. 
--dora blakey diana
+Acceptance tasks:
+- clean home screen presentation
+- clean tutorial/starting screen
+- straight-forward directions throughout
+
 
 Feature Tasks: 
 - The maze offers interactive qualities to keep a participant engaged
@@ -78,4 +84,3 @@ Feature tasks:
 Acceptance tasks:
 - clean home screen presentation
 - clean tutorial/starting screen
-- straight-forward directions throughout
