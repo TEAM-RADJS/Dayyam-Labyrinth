@@ -1,7 +1,6 @@
 //javascript
 mapData = {};
 
-<<<<<<< HEAD
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
 	//Thoughts here? //'trapped' image with simple message
@@ -21,9 +20,6 @@ const FLOOR = 1;
 const SAFE = 2;
 
 function makeNewMaze(mapSize){
-=======
-function makeNewMaze(){
->>>>>>> 09eb31c8a5377b496f421c57c36933d6fed0327c
 	//Robert TODO: build a process by which a new array of arrays is created with the proper lengths, and to ensure that there IS a path to the end
 	//Robert TODO: assign mapData these key value pairs {map: [ [], [], [], [] ],  playerPosition: [y, x], mosterNOrigin: [y, x]}
 	var mapSize = 50;
@@ -729,8 +725,3 @@ function startGame(){
 	});
 }
 
-<<<<<<< HEAD
-
-=======
-//TODO: identify #startButton element and attach an eventListener; eventListener will launch game Table
->>>>>>> 09eb31c8a5377b496f421c57c36933d6fed0327c
