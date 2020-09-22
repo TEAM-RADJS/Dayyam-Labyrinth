@@ -706,4 +706,4 @@ function startGame(){
 	});
 }
 
-//TODO: identify #startButton element and attach an eventListener; eventListener will launch startGame 
+//TODO: identify #startButton element and attach an eventListener; eventListener will launch game Table
