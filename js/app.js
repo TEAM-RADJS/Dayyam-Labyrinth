@@ -4,9 +4,12 @@ mapData = {};
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
 	//Thoughts here?
-	//TODO: set #containerDiv.innerHTML = '';
-	//TODO: set #containerDiv.setAttribute('backgound-image', 'url(assets/captured.jpg)')
+	var theTable = document.getElementById('containerDiv')
+	 theTable.innerHTML = '';
+	 theTable.setAttribute('background-image', 'url(assets/img/trapped person.jpeg)');
+
 }
+
 
 const WALL = 0;
 const FLOOR = 1;
