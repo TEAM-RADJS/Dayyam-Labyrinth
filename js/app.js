@@ -628,19 +628,51 @@ function hunterMove(){
 	}
 }
 
-function movePlayer(keyPressed){
+function movePlayer(keyPressed) {
+
 	var acceptedMoves = ['w', 'a', 's', 'd', 'space'];
-	var playerY = mapData['playerPosition'][0];
-	var playerX = mapData['playerPosition'][1];
-	var theMap = mapData['map'];
-	//TODO: check if acceptedMoves.includes(keyPressed)
-	//TODO: if not, return a null value
-	//TODO: if yes create conditions for each key option other than space;
-	//TODO: for w, check if theMap[(playerY)-1][(playerX)] is a traversible tile; if it is playerY -= 1;
-	//TODO: for s, check if theMap[(playerY)+1][(playerX)] is a traversible tile; if it is playerY += 1;
-	//TODO: for a, check if theMap[(playerY)][(playerX)-1] is a traversible tile; if it is playerX -= 1;
-	//TODO: for d, check if theMap[(playerY)][(playerX)+1] is a traversible tile; if it is playerX += 1;
-	//TODO: outside of the key specific conditionals, call the hunterMove() function and then the showEnvironment function
+	var oldYPosition = mapData.playerPosition[0];
+	var oldXPosition = mapData.playerPosition[1];
+	var theMap = mapData.map;
+	var newYPosition;
+	var newXPosition;
+	
+	if (!acceptedMoves.includes(keyPressed)) {
+		return;
+	}
+
+	if (keyPressed === 'w') {
+		if(theMap[(oldYPosition)-1][(oldXPosition)] === 's') {
+			newYPosition = oldYPosition - 1;
+		}
+	}
+
+	if (keyPressed === 's') {
+		if(theMap[(oldYPosition)+1][(oldXPosition)] === 's') {
+			newYPosition = oldYPosition + 1;
+		}
+	}
+
+	if (keyPressed === 'a') {
+		if(theMap[(oldYPosition)][(oldXPosition)-1] === 's') {
+			newYPosition = oldYPosition + 1;
+		}
+	}
+
+	if (keyPressed === 'd') {
+		if(theMap[(oldYPosition)][(oldXPosition)+1] === 's') {
+			newYPosition = oldYPosition + 1;
+		}
+	}
+
+	mapData.playerPosition[0] = newYPosition;
+	mapData.playerPosition[1] = newXPosition;
+
+	mapData.theMap[newYPosition][newXPosition] = 'p';
+	mapData.theMap[oldYPosition][oldXPosition] = 's';
+
+	hunterMove();
+	showEnvironment();
 }
 
 function startGame(){
