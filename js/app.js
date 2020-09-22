@@ -625,6 +625,9 @@ function hunterMove(){
 			mapData[setOfMonsters[z][1]] -= 1;
 			mapData[setOfMonsters[z]][0][mapData[setOfMonsters[z]][1]] = parseInt('4'+z);
 		}
+		if (mapData[setOfMonsters[z]] == mapData.playerPosition) {
+			// Game over ?
+		}
 	}
 }
 
@@ -642,34 +645,47 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 'w') {
-		if(theMap[(oldYPosition)-1][(oldXPosition)] === 's') {
+		if(theMap[(oldYPosition)-1][(oldXPosition)] === 1 || theMap[(oldYPosition)-1][(oldXPosition)] === 2) {
 			newYPosition = oldYPosition - 1;
+		} else if (theMap[(oldYPosition)-1][(oldXPosition)] === 0) {
+			return;
+		} else {
+			// TODO: Gameover screen ?
 		}
 	}
 
 	if (keyPressed === 's') {
-		if(theMap[(oldYPosition)+1][(oldXPosition)] === 's') {
+		if(theMap[(oldYPosition)+1][(oldXPosition)] === 1 || theMap[(oldYPosition)+1][(oldXPosition)] === 2) {
 			newYPosition = oldYPosition + 1;
+		}else if (theMap[(oldYPosition)+1][(oldXPosition)] === 0) {
+			return;
+		} else {
+			// TODO: Gameover screen ?
 		}
 	}
 
 	if (keyPressed === 'a') {
-		if(theMap[(oldYPosition)][(oldXPosition)-1] === 's') {
+		if(theMap[(oldYPosition)][(oldXPosition)-1] === 1 || theMap[(oldYPosition)][(oldXPosition)-1] === 2) {
 			newYPosition = oldYPosition + 1;
+		}else if (theMap[(oldYPosition)][(oldXPosition-1)] === 0) {
+			return;
+		} else {
+			// TODO: Gameover screen ?
 		}
 	}
 
 	if (keyPressed === 'd') {
-		if(theMap[(oldYPosition)][(oldXPosition)+1] === 's') {
+		if(theMap[(oldYPosition)][(oldXPosition)+1] === 1 || theMap[(oldYPosition)][(oldXPosition)+1] === 2) {
 			newYPosition = oldYPosition + 1;
+		}else if (theMap[(oldYPosition)][(oldXPosition+1)] === 0) {
+			return;
+		} else {
+			// TODO: Gameover screen ?
 		}
 	}
 
 	mapData.playerPosition[0] = newYPosition;
 	mapData.playerPosition[1] = newXPosition;
-
-	mapData.theMap[newYPosition][newXPosition] = 'p';
-	mapData.theMap[oldYPosition][oldXPosition] = 's';
 
 	hunterMove();
 	showEnvironment();
