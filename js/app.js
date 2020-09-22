@@ -1,6 +1,7 @@
 //javascript
 mapData = {};
 
+<<<<<<< Updated upstream
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
 	//Thoughts here?
@@ -8,6 +9,12 @@ function gameOver(){
 	//TODO: set #containerDiv.setAttribute('backgound-image', 'url(assets/captured.jpg)')
 }
 
+=======
+var WALL = 0;
+var FLOOR = 1;
+var SAFE = 2;
+var MONSTER = 4;
+>>>>>>> Stashed changes
 
 function makeNewMaze(){
 	//Robert TODO: build a process by which a new array of arrays is created with the proper lengths, and to ensure that there IS a path to the end
@@ -656,9 +663,9 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 'w') {
-		if (theMap[(oldYPosition)-1][(oldXPosition)] === 1 || theMap[(oldYPosition)-1][(oldXPosition)] === 2) {
+		if (theMap[(oldYPosition)-1][(oldXPosition)] === FLOOR || theMap[(oldYPosition)-1][(oldXPosition)] === SAFE) { // is traversible
 			newYPosition = oldYPosition - 1;
-		} else if (theMap[(oldYPosition)-1][(oldXPosition)] === 0) {
+		} else if (theMap[(oldYPosition)-1][(oldXPosition)] === WALL) {
 			return;
 		} else {
 			gameOver();
@@ -666,9 +673,9 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 's') {
-		if (theMap[(oldYPosition)+1][(oldXPosition)] === 1 || theMap[(oldYPosition)+1][(oldXPosition)] === 2) {
+		if (theMap[(oldYPosition)+1][(oldXPosition)] === FLOOR || theMap[(oldYPosition)+1][(oldXPosition)] === SAFE) {
 			newYPosition = oldYPosition + 1;
-		} else if (theMap[(oldYPosition)+1][(oldXPosition)] === 0) {
+		} else if (theMap[(oldYPosition)+1][(oldXPosition)] === WALL) {
 			return;
 		} else {
 			gameOver();
@@ -676,9 +683,9 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 'a') {
-		if (theMap[(oldYPosition)][(oldXPosition)-1] === 1 || theMap[(oldYPosition)][(oldXPosition)-1] === 2) {
+		if (theMap[(oldYPosition)][(oldXPosition)-1] === FLOOR || theMap[(oldYPosition)][(oldXPosition)-1] === SAFE) {
 			newYPosition = oldYPosition + 1;
-		} else if (theMap[(oldYPosition)][(oldXPosition-1)] === 0) {
+		} else if (theMap[(oldYPosition)][(oldXPosition-1)] === WALL) {
 			return;
 		} else {
 			gameOver();
@@ -686,9 +693,9 @@ function movePlayer(keyPressed) {
 	}
 
 	if (keyPressed === 'd') {
-		if (theMap[(oldYPosition)][(oldXPosition)+1] === 1 || theMap[(oldYPosition)][(oldXPosition)+1] === 2) {
+		if (theMap[(oldYPosition)][(oldXPosition)+1] === FLOOR || theMap[(oldYPosition)][(oldXPosition)+1] === SAFE) {
 			newYPosition = oldYPosition + 1;
-		} else if (theMap[(oldYPosition)][(oldXPosition+1)] === 0) {
+		} else if (theMap[(oldYPosition)][(oldXPosition+1)] === WALL) {
 			return;
 		} else {
 			gameOver();
