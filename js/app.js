@@ -51,6 +51,7 @@ function startGame(){
 	//TODO: create a variable mapSize and assign it the value of the '#askSize' input form
 	makeNewMaze(mapSize);
 	//TODO: use DOM to start audio
+	
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	//TODO: write a loop to iterate over mapData['map'] and create a 'tr' element for each inner array, and then in a nested for loop a 'td' for each index inside of that array, and assign that td the innerHTML of an 'img' element. Assign the image  an id of String(i)+'-'+String(j)
 	showEnvironment();
