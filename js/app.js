@@ -154,12 +154,398 @@ function makeNewMaze(){
 }
 
 function showEnvironment(){
-	function showTable(increments){
-		var checkPosition = mapData['map'][(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]]
+	function show(increments){
+		var checkPosition = mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]]
 		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
+		var tileImage = document.getElementById(String(mapData['playerPosition'][0]+increments[0])+'-'+String(mapData['playerPosition'][1]+increments[1]))
+		if (checkPosition == 1) {
+			tileImage.setAttribute('src', 'assets/floor.jpg');
+		} else if (checkPosition == 0) {
+			tileImage.setAttribute('src', 'assets/wall.jpg');
+		} else if (checkPosition == 2) {
+			tileImage.setAttribute('src', 'assets/safe.jpg');
+		} else {
+			tileImage.setAttribute('src', 'assets/monster.jpg');
+		}
 	}
+	var map = mapData.map;
+	var curY = mapData.playerPosition[0];
+	var curX = mapData.playerPosition[1];
+	var lastCol = mapData.map.length-1;
+	var lastRow = mapData.map[0].length-1;
 	//TODO: write a for loop to iterate over all image id's and assign the empty image source
+	for (let i = 0; i < map.length; i++){
+		for (let j = 0; j < map[i].length; j++){
+			var tileImage = document.getElementById(String(i)+'-'+String(j));
+			tileImage.setAttribute('src', 'assets/empty.jpg');
+		}
+	}
 	//Robert TODO: translate the printEnvironment function from Dungeon_Game into javaScript here
+	var selfTile = document.getElementById(String(curY)+'-'+String(curX));
+	selfTile.setAttribute('src', 'assets/self.jpg')
+
+	if (curX != 0){
+		show([0, -1]);
+		if (map[curY][curX-1] != 0){
+			if (curY != lastRow){
+				show([1, -1]);
+
+				if (map[curY+1][curX-1] != 0){
+					if (curY != lastRow-1){
+						show([2, -1]);
+						
+						if (map[curY+2][curX-1] != 0){
+							if (curX != 1){
+								show([2, -2]);
+							}
+							if (curY != lastRow-2){
+								show([3, -1]);
+							}
+						}
+					}							
+					if (curX != 1){
+						show([1, -2]);
+						
+						if (map[curY+1][curX-2] != 0){
+							if (curX != 2){
+								show([1, -3]);
+							}
+							if (curY != lastRow-1){
+								show([2, -2]);
+							}
+					}
+				}				
+			}
+			if (curY != 0){	
+				show([-1, -1]);
+				
+				if (map[curY-1][curX-1] != 0){
+					if (curY != 1){
+						show([-2, -1]);
+						if (map[curY-2][curX-1] != 0 and curX != 2){
+							if (curX != 1){
+								show([-2, -2]);
+							}
+							if (curY != 2){
+								show([-3, -1]);
+							}
+						}
+					}
+					if (curX != 1){
+						show([-1, -2]);
+						if (map[curY-1][curX-2] != 0){
+							if (curY != 1){
+								show([-2, -2]);
+							}
+							if (curX != 2){
+								show([-1, -3]);
+							}
+						}
+					}
+				}
+			}
+			if (curX != 1){
+				show([0, -2]);
+
+				if (map[curY][curX-2] != 0){
+					if (curY != lastRow){
+						show([1, -2]);
+						if (map[curY+1][curX-2] != 0 and curX != 3){
+							show([1, -3]);
+						}
+					}
+					if (curY != 0){	
+						show([-1, -2]);
+						if (map[curY-1][curX-2] != 0 and curX != 3){
+							show([-1, -3]);
+						}
+					}
+					if (curX != 2){
+						show([0, -3]);
+						if (map[curY][curX-3] != 0){
+							if (curY != lastRow){
+								show([1, -3]);
+							}
+							if (curY != 0){	
+								show([-1, -3]);
+							}
+							if (curX != 3){
+								show([0, -4]);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if (curX != lastCol){
+		show([0, 1]);
+
+		if (map[curY][curX+1] != 0){
+			if (curY != lastRow){
+				show([1, 1]);
+
+				if (map[curY+1][curX+1] != 0){
+					if (curY != lastRow-1){
+						show([2, 1]);
+
+						if (map[curY+2][curX+1] != 0){
+							if (curX != lastCol-1){
+								show([2, 2]);
+							}
+							if (curY != lastRow-2){
+								show([3, 1]);
+							}
+						}
+					}
+					if (curX != lastCol-1){
+						show([1, 2]);
+						if (map[curY+1][curX+2] != 0){
+							if (curX != lastCol-2){
+								show([1, 3]);
+							}
+							if (curY != lastRow-1){
+								show([2, 2]);
+							}
+						}
+					}
+				}
+			}
+			if (curY != 0){	
+				show([-1, 1]);
+
+				if (map[curY-1][curX+1] != 0){
+					if (curY != 1){
+						show([-2, 1]);
+
+						if (map[curY-2][curX+1] != 0){
+							if (curX != lastCol-1){
+								show([-2, 2]);
+							}
+							if (curY != 2){
+								show([-3, 1]);
+							}
+						}
+					}
+					if (curX != lastCol-1){
+						show([-1, 2]);
+						if (map[curY-1][curX+2] != 0 and curY != 1){
+							show([-2, 2]);
+						}
+					}
+				}
+			}
+			if (curX != lastCol-1){
+				show([0, 2]);
+
+				if (map[curY][curX+2] != 0){
+					if (curY != lastRow){
+						show([1, 2]);
+
+						if (map[curY+1][curX+2] != 0 and curX != lastCol-2){
+							show([1, 3]);
+						}
+					}
+					if (curY != 0){	
+						show([-1, 2]);
+						if (map[curY-1][curX+2] != 0 and curX != lastCol-2){
+							show([-1, 3]);
+						}
+					}
+					if (curX != lastCol-2){
+						show([0, 3]);
+						if (map[curY][curX+3] != 0){
+							if (curY != lastRow){
+								show([1, 3]);
+							}
+							if (curY != 0){	
+								show([-1, 3]);
+							}
+							if (curX != lastCol-3){
+								show([0, 4]);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if (curY != 0){
+		show([-1, 0]);
+
+		if (map[curY-1][curX] != 0){
+			if (curX != lastCol){
+				show([-1, 1]);
+
+				if (map[curY-1][curX+1] != 0){
+					if (curX != lastCol-1){
+						show([-1, 2]);
+
+						if (map[curY-1][curX+2] != 0){
+							if (curY != 1){
+								show([-2, 2]);
+							}
+							if (curX != lastCol-2){
+								show([-1, 3]);
+							}
+						}
+					}
+					if (curY != 1){
+						show([-2, 1]);
+						if (map[curY-2][curX+1] != 0 and curX != lastCol-1){
+							show([-2, 2]);
+						}
+					}
+				}
+			}
+			if (curX != 0){	
+				show([-1, -1]);
+
+				if (map[curY-1][curX-1] != 0){
+					if (curY != 1){
+						show([-2, -1]);
+						if (map[curY-2][curX-1] != 0 and curX != 2){
+							show([-2, -2]);
+						}
+					}
+					if (curX != 1){
+						show([-1, -2]);
+						if (map[curY-1][curX-2] != 0){
+							if (curY != 1){
+								show([-2, -2]);
+							}
+							if (curX != 2){
+								show([-1, -3]);
+							}
+						}
+					}
+				}
+			}
+			if (curY != 1){
+				show([-2, 0]);
+
+				if (map[curY-2][curX] != 0){
+					if (curX != lastCol){
+						show([-2, 1]);
+
+						if (map[curY-2][curX+1] != 0 and curY != 2){
+							show([-3, 1]);
+						}
+					}
+					if (curX != 0){	
+						show([-2, -1]);
+						if (map[curY-2][curX-1] != 0 and curY != 2){
+							show([-3, -1]);
+						}
+					}
+					if (curY != 2){
+						show([-3, 0]);
+						if (map[curY-3][curX] != 0){
+							if (curX != lastCol){
+								show([-3, 1]);
+							}
+							if (curX != 0){	
+								show([-3, -1]);
+							}
+							if (curY != 3){
+								show([-4, 0]);
+							}
+						}
+					}
+				}
+			}
+		}
+	}	
+	if (curY != lastRow){
+		show([1, 0]);
+
+		if (map[curY+1][curX] != 0){
+			if (curX != lastCol){
+				show([1, 1]);
+
+				if (map[curY+1][curX+1] != 0){
+					if (curX != lastCol-1){
+						show([1, 2]);
+
+						if (map[curY+1][curX+2] != 0){
+							if (curY != lastRow-1){
+								show([2, 2]);
+							}
+							if (curX != lastCol-2){
+								show([1, 3]);
+							}
+						}
+					}
+					if (curY != lastRow-1){
+						show([2, 1]);
+
+						if (map[curY+2][curX+1] != 0 and curX != lastCol-1){
+							show([2, 2]);
+						}
+					}
+				}
+			}
+			if (curX != 0){	
+				show([1, -1]);
+
+				if (map[curY+1][curX-1] != 0){
+					if (curY != lastRow-1){
+						show([2, -1]);
+						if (map[curY+2][curX-1] != 0 and curX != 2){
+							show([2, -2]);
+						}
+					}
+					if (curX != 1){
+						show([1, -2]);
+
+						if (map[curY+1][curX-2] != 0 and curY != lastRow-1){
+							if (curY != lastRow-1){
+								show([2, -2]);
+							}
+							if (curX != 2){
+								show([1, -3]);
+							}
+						}
+					}
+				}
+			}
+			if (curY != lastRow-1){
+				show([2, 0]);
+
+				if (map[curY+2][curX] != 0){
+					if (curX != lastCol){
+						show([2, 1]);
+
+						if (map[curY+2][curX+1] != 0 and curY != lastRow-2){
+							show([3, 1]);
+						}
+					}
+					if (curX != 0){	
+						show([2, -1]);
+
+						if (map[curY+2][curX-1] != 0 and curY != lastRow-2){
+							show([3, -1]);
+						}
+					}
+					if (curY != lastRow-2){
+						show([3, 0]);
+
+						if (map[curY+3][curX] != 0){
+							if (curX != lastCol){
+								show([3, 1]);
+							}
+							if (curX != 0){	
+								show([3, -1]);
+							}
+							if (curY != lastRow-3){
+								show([4, 0]);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 function hunterMove(){
