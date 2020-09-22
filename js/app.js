@@ -3,16 +3,28 @@ mapData = {};
 
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
+<<<<<<< HEAD
 	//Thoughts here? //'trapped' image with simple message
 	var theTable = document.getElementById('containerDiv');
 	 theTable.innerHTML = 'Captured: Game Over';
 	 theTable.setAttribute= background-image = url(assets/img/trapped_person.jpeg);
+=======
+	//Thoughts here?
+	var theTable = document.getElementById('containerDiv')
+	theTable.innerHTML = '';
+	theTable.setAttribute('class', 'lostScreen');
+	// theTable.setAttribute('style', 'background-image:url(assets/img/trapped_person.jpeg);background-size:cover;');
+	var gameOverText = document.createElement('h1');
+	theTable.append(gameOverText);
+	gameOverText.textContent = 'You\'ve been captured!';
+>>>>>>> 9ee8cadf161bb01b561bd889f0dd798444ebb99c
 }
 
 function escapedScreen() {
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
-	theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
+	theTable.setAttribute('class', 'victoryScreen');
+	// theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
 	var gameOverText = document.createElement('h1');
 	theTable.append(gameOverText);
 	gameOverText.textContent = 'You escaped!';
@@ -176,9 +188,9 @@ function makeNewMaze(mapSize){
 
 	for (let i = 0; i < 9; i++) {
 		for (let j = 0; j < 9; j++) {
-			if (typeof(mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]) != 'undefined'){
+			try {
 				mapData.viewMap[i].push((mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]));
-			} else {
+			} catch {
 				mapData.viewMap[i].push(0);
 			}
 		}
@@ -188,15 +200,15 @@ function makeNewMaze(mapSize){
 function showEnvironment(){
 	
 	function show(increments){
-		if (typeof(mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]]) != 'undefined'){
+		try {
 			var checkPosition = mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]];
-		} else {
-			var checkPosition = 'undefined';
+		} catch {
+			var checkPosition = 'empty';
 		}
 		
 		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
 		var tileImage = document.getElementById(String(4+increments[0])+'-'+String(4+increments[1]));
-		if (typeof(checkPosition)=='undefined') {
+		if (typeof(checkPosition)=='empty') {
 			tileImage.setAttribute('src', 'assets/img/empty.jpg');
 		} else if (checkPosition == FLOOR) {
 			tileImage.setAttribute('src', 'assets/img/floor.jpg');
@@ -587,7 +599,6 @@ function showEnvironment(){
 	}
 
 
-
 	var map = mapData.map;
 	var curY = mapData.playerPosition[0];
 	var curX = mapData.playerPosition[1];
@@ -605,7 +616,7 @@ function showEnvironment(){
 	selfTile.setAttribute('src', 'assets/img/self.jpg')
 
 	left();
-		
+
 	right();
 
 	up();
@@ -833,6 +844,7 @@ function startGame(){
 	makeNewMaze(mapSize);
 	var containerDiv = document.getElementById('containerDiv');
 	containerDiv.innerHTML = '';
+	containerDiv.setAttribute('class', 'gamePlay');
 	//TODO: use DOM to start audio
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	var gameTable = document.createElement('table');
