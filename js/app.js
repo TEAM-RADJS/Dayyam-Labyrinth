@@ -844,8 +844,7 @@ function startGame(){
 	containerDiv.innerHTML = '';
 	//TODO: use DOM to start audio
 
-	var audio = new Audio('ScaryHalloween.mp3');
-	audio.play();
+
 
 	// var loopAudio = document.getElementById("formsHere");
 	// loopAudio.addEventListener('submit', function (playAudio) {
@@ -886,5 +885,7 @@ var startButton = document.getElementById('formsHere');
 // starts the game when a submit takes place (startButton clicked)
 startButton.addEventListener('submit', function (e) {
 	e.preventDefault();
+	var audio = new Audio('assets/ScaryHalloween.mp3');
+	audio.play();
 	startGame();
 });
