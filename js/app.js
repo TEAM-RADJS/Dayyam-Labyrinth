@@ -6,7 +6,8 @@ function gameOver(){
 	//Thoughts here?
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
-	theTable.setAttribute('style', 'background-image:url(assets/img/trapped_person.jpeg);');
+	theTable.setAttribute('id', 'lostScreen');
+	// theTable.setAttribute('style', 'background-image:url(assets/img/trapped_person.jpeg);background-size:cover;');
 	var gameOverText = document.createElement('h1');
 	theTable.append(gameOverText);
 	gameOverText.textContent = 'You\'ve been captured!';
@@ -15,7 +16,8 @@ function gameOver(){
 function escapedScreen() {
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
-	theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
+	theTable.id = 'victoryScreen';
+	// theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
 	var gameOverText = document.createElement('h1');
 	theTable.append(gameOverText);
 	gameOverText.textContent = 'You escaped!';
