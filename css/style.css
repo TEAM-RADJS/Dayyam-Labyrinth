@@ -39,18 +39,22 @@ body {
 
 h2 {
     text-align: center;
-    height: 30px;
+    height: 15vh;
     color: red;
     font-style: normal;
-    ffont-family: 'Grenze', serif;
+    font-family: 'Grenze Gotisch', cursive;
+    font-weight: 100;
+    font-size: 5vh;
+    text-decoration: blink;
+
     /* border: thin solid black; */
 }
 
 p {
     text-align: center;
-    height: 100px;
+    height: 5vh;
     color: black;
-
+    font-family: 'Grenze Gotisch', cursive;
 }
 
 button {
@@ -67,4 +71,12 @@ a {
     width: 100px;
     margin: 50px;
     margin-left: 590px;
+    font-family: 'Grenze Gotisch', cursive;
+}
+ul {
+
+    text-align: center;
+    font-family: 'Grenze Gotisch', cursive;
+    text-shadow: 1ch;
+    
 }
