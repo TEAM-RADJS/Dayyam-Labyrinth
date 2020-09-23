@@ -3,12 +3,6 @@ mapData = {};
 
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
-<<<<<<< HEAD
-	//Thoughts here? //'trapped' image with simple message
-	var theTable = document.getElementById('containerDiv');
-	 theTable.innerHTML = 'Captured: Game Over';
-	 theTable.setAttribute('background-image', 'url(assets/img/trapped_person.jpeg)');
-=======
 	//Thoughts here?
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
@@ -16,7 +10,6 @@ function gameOver(){
 	var gameOverText = document.createElement('h1');
 	theTable.append(gameOverText);
 	gameOverText.textContent = 'You\'ve been captured!';
->>>>>>> 6efc30f5fd94d021ca41346cb7a642341550e275
 }
 
 function escapedScreen() {
@@ -597,7 +590,6 @@ function showEnvironment(){
 	}
 
 
-
 	var map = mapData.map;
 	var curY = mapData.playerPosition[0];
 	var curX = mapData.playerPosition[1];
@@ -615,7 +607,7 @@ function showEnvironment(){
 	selfTile.setAttribute('src', 'assets/img/self.jpg')
 
 	left();
-		
+
 	right();
 
 	up();
