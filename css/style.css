@@ -41,6 +41,8 @@ h2 {
     text-align: center;
     height: 30px;
     color: red;
+    font-style: normal;
+    ffont-family: 'Grenze', serif;
     /* border: thin solid black; */
 }
 
