@@ -6,7 +6,7 @@ function gameOver(){
 	//Thoughts here?
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
-	theTable.setAttribute('id', 'lostScreen');
+	theTable.setAttribute('class', 'lostScreen');
 	// theTable.setAttribute('style', 'background-image:url(assets/img/trapped_person.jpeg);background-size:cover;');
 	var gameOverText = document.createElement('h1');
 	theTable.append(gameOverText);
@@ -16,7 +16,7 @@ function gameOver(){
 function escapedScreen() {
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
-	theTable.id = 'victoryScreen';
+	theTable.setAttribute('class', 'victoryScreen');
 	// theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
 	var gameOverText = document.createElement('h1');
 	theTable.append(gameOverText);
@@ -837,6 +837,7 @@ function startGame(){
 	makeNewMaze(mapSize);
 	var containerDiv = document.getElementById('containerDiv');
 	containerDiv.innerHTML = '';
+	theTable.setAttribute('class', 'gamePlay');
 	//TODO: use DOM to start audio
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	var gameTable = document.createElement('table');
