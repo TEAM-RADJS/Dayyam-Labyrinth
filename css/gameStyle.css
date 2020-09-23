@@ -7,17 +7,39 @@ body {
 	margin:0px;
 }
 
-a {
+#goHome {
 	color: blue;
-	font-size: 24px;
+	font-size: 2vh;
 	background-color: black;
+	width: 20vh;
+	height:3vh;
+	border-radius: 0px 0px 30px 0px;
+	display: inline-block;
+	margin-bottom: 1vh;
+	font-family: 'Imprint MT Shadow';
+	text-align: center;
+}
+
+#goAbout {
+	color: blue;
+	font-size: 2vh;
+	background-color: black;
+	width: 20vh;
+	height:3vh;
+	border-radius: 0px 0px 30px 30px;
+	display: inline-block;
+	margin-bottom: 1vh;
+	font-family: 'Imprint MT Shadow';
+	margin-left: 5vh;
+	text-align: center;
 }
 
 div {
 	width: 90vh;
 	height: 90vh;
 	margin:auto;
-	border:6px solid black;
+
+	border:8px solid black;
 	border-radius: 30px;
 	padding:.5vw;
 	background-color: black;
@@ -39,12 +61,14 @@ table, tr, td {
 }
 
 
+
 .victoryScreen {
 	background-image: url('/assets/img/scary_house.jpeg');
 	background-size: cover;
 }
 
-.victoryScreen > h1 {
+.victoryScreen > a {
+	position: absolute;
 	font-size: 8vh;
 	color: peachpuff;
 	font-family: 'Blackadder ITC';
@@ -53,9 +77,27 @@ table, tr, td {
 	transform: translate(-50%, -50%);
 }
 
+#containerDiv > a:hover span {
+	display: none;
+}
+
+#containerDiv > a:hover:before {
+	content: 'Try again?';
+  
+}
+
 .lostScreen {
 	background-image: url('/assets/img/trapped_person.jpeg');
 	background-size: cover;
+}
+
+.lostScreen > a {
+	position: absolute;
+	margin-top: 10vh;
+	margin-left: 10vh;
+	font-size: 7vh;
+	color: maroon;
+	font-family: 'Blackadder ITC';
 }
 
 .startingScreen {
@@ -64,6 +106,93 @@ table, tr, td {
 }
 
 .startingScreen > #formsHere {
-	margin-top: 70vh;
-	margin-left: 25vh;
+	margin-top: 65vh;
+	margin-left: 5vh;
+	background-color: rgba(0, 0, 0, .5);
+	width: 80vh;
+}
+
+#formsHere > #title {
+	display: inline-block;
+	font-size: 6vh;
+	color: maroon;
+	font-family: 'Blackadder ITC';
+	margin-left: 5vh;
+	width: 70vh;
+	height: 8vh;
+}
+
+#startButton {
+	margin-left: 1vh;
+}
+
+#formsHere > input {
+	color:maroon;
+	margin-top: 2vh;
+	height:4vh;
+	width: 25vh;
+	font-size: 2vh;
+	font-family: 'Imprint MT Shadow';
+	text-align: center;
+	background-color: transparent;
+	border: 5px;
+	padding: 0px;
+}
+
+#formsHere > select {
+	color:maroon;
+	margin-top: 2vh;
+	height:4vh;
+	width: 25vh;
+	font-size: 2vh;
+	font-family: 'Imprint MT Shadow';
+	text-align: center;
+	background-color: transparent;
+	border: 5px;
+}
+
+#genderLabel {
+	margin-left: 10vw;
+	width: 25vh;
+}
+
+#genderCheck {
+	margin-left: 10vh;
+}
+
+#explainInput {
+	margin-left: 1vh;
+	display: inline-block;
+	width:25vh;
+}
+
+#askSize {
+	margin-left: 1vh;
+}
+
+#formsHere > label {
+	color:maroon;
+	margin-top: 2vh;
+	font-size: 2vh;
+	font-family: 'Imprint MT Shadow';
+	text-align: center;
+	background-color: transparent;
+}
+
+
+img[id='0-0'] {
+	border-radius: 30px 0px 0px 0px;
+}
+
+img[id='0-8'] {
+	border-radius: 0px 30px 0px 0px;
+}
+
+img[id='8-0'] {
+	border-radius: 0px 0px 0px 30px;
+}
+
+img[id='8-8'] {
+	border-radius: 0px 0px 30px 0px;
+
 }
