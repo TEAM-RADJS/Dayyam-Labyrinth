@@ -1,7 +1,26 @@
+body {
+	height:100vh;
+	width:100vw;
+	background-image: url('/assets/img/dark_texture.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin:0px;
+}
+
+a {
+	color: blue;
+	font-size: 24px;
+	background-color: black;
+}
+
 div {
 	width: 90vh;
 	height: 90vh;
 	margin:auto;
+	border:6px solid black;
+	border-radius: 30px;
+	padding:.5vw;
+	background-color: black;
 }
 
 img {
@@ -16,19 +35,22 @@ table, tr, td {
 	border-spacing: 0px;
 	margin:0px;
 	border:0px;
+	line-height:0px;
 }
 
-.victoryscreen>h1 {
-	width: 100%;
-	
+
+.victoryScreen {
+	background-image: url('/assets/img/scary_house.jpeg');
+	background-size: cover;
 }
 
-body {
-
-}
-
-html {
-	
+.victoryScreen > h1 {
+	font-size: 8vh;
+	color: peachpuff;
+	font-family: 'Blackadder ITC';
+	margin-left: 45vh;
+	margin-top:80vh;
+	transform: translate(-50%, -50%);
 }
 
 .lostScreen {
@@ -39,4 +61,9 @@ html {
 .startingScreen {
 	background-image: url('/assets/img/introPicture.jpg');
 	background-size: cover;
+}
+
+.startingScreen > #formsHere {
+	margin-top: 70vh;
+	margin-left: 25vh;
 }
