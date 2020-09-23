@@ -845,21 +845,6 @@ function startGame(){
 	var containerDiv = document.getElementById('containerDiv');
 	containerDiv.innerHTML = '';
 	//TODO: use DOM to start audio
-
-
-
-	// var loopAudio = document.getElementById("formsHere");
-	// loopAudio.addEventListener('submit', function (playAudio) {
-	// 	playAudio.preventDefault();
-	// 	playAudio.play();
-	// });
-	// stopAudio.addEventListener('submit', function (pauseAudio) {
-	// 	pauseAudio.preventDefault();
-	// 	pauseAudio.pause();
-	// });
-
-
-
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	var gameTable = document.createElement('table');
 	containerDiv.append(gameTable);
