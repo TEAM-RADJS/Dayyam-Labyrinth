@@ -10,9 +10,9 @@ Final Project Code 201
 - Making minimum viability- maze solving way out.
 
 
-![](assets/Home_Page_Wireframe.png)
+<img src='assets/Home_Page_Wireframe.PNG'>
 
-![](assets/Domain_Model)
+<img src='assets/Domain_Model.PNG'>
 
 ## User Stories
 
