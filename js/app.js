@@ -117,7 +117,7 @@ function makeNewMaze(mapSize){
 					}
 				}
 			} else {
-				triedToStep++;
+				triedToStep+=1;
 				if (mapData.map[curY][curX-1] == WALL && (mapData.map[curY+1][curX-1] != FLOOR || mapData.map[curY-1][curX-1] != FLOOR)){
 					triedToStep = 0;
 					madeAStep++;
@@ -845,11 +845,21 @@ function startGame(){
 	var containerDiv = document.getElementById('containerDiv');
 	containerDiv.innerHTML = '';
 	//TODO: use DOM to start audio
+
+
+
 	// var loopAudio = document.getElementById("formsHere");
 	// loopAudio.addEventListener('submit', function (playAudio) {
 	// 	playAudio.preventDefault();
 	// 	playAudio.play();
 	// });
+	// stopAudio.addEventListener('submit', function (pauseAudio) {
+	// 	pauseAudio.preventDefault();
+	// 	pauseAudio.pause();
+	// });
+
+
+
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	var gameTable = document.createElement('table');
 	containerDiv.append(gameTable);
@@ -877,5 +887,7 @@ var startButton = document.getElementById('formsHere');
 // starts the game when a submit takes place (startButton clicked)
 startButton.addEventListener('submit', function (e) {
 	e.preventDefault();
+	var audio = new Audio('assets/ScaryHalloween.mp3');
+	audio.play();
 	startGame();
 });
