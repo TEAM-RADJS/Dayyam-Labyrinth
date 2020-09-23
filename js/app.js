@@ -179,9 +179,9 @@ function makeNewMaze(mapSize){
 
 	for (let i = 0; i < 9; i++) {
 		for (let j = 0; j < 9; j++) {
-			if (typeof(mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]) != 'undefined'){
+			try {
 				mapData.viewMap[i].push((mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]));
-			} else {
+			} catch {
 				mapData.viewMap[i].push(0);
 			}
 		}
@@ -191,15 +191,15 @@ function makeNewMaze(mapSize){
 function showEnvironment(){
 	
 	function show(increments){
-		if (typeof(mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]]) != 'undefined'){
+		try {
 			var checkPosition = mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]];
-		} else {
-			var checkPosition = 'undefined';
+		} catch {
+			var checkPosition = 'empty';
 		}
 		
 		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
 		var tileImage = document.getElementById(String(4+increments[0])+'-'+String(4+increments[1]));
-		if (typeof(checkPosition)=='undefined') {
+		if (typeof(checkPosition)=='empty') {
 			tileImage.setAttribute('src', 'assets/img/empty.jpg');
 		} else if (checkPosition == FLOOR) {
 			tileImage.setAttribute('src', 'assets/img/floor.jpg');
