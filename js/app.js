@@ -115,7 +115,7 @@ function makeNewMaze(mapSize){
 					}
 				}
 			} else {
-				triedToStep++;
+				triedToStep+=1;
 				if (mapData.map[curY][curX-1] == WALL && (mapData.map[curY+1][curX-1] != FLOOR || mapData.map[curY-1][curX-1] != FLOOR)){
 					triedToStep = 0;
 					madeAStep++;
