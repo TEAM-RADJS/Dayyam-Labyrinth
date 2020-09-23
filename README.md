@@ -10,17 +10,11 @@ Final Project Code 201
 - Skill Building, Problem Solving, Brain-workout, Puzzle
 - Making minimum viability- maze solving way out.
 
-<<<<<<< HEAD
-![Home Page Wireframe](assets/Home_Page_Wireframe.png)
-
-### User Stories
-=======
 <img src='assets/Home_Page_Wireframe.PNG'>
 
 <img src='assets/Domain_Model.PNG'>
 
-## User Stories
->>>>>>> 39cebdb9367f2472e121bc311bfed58764486e30
+### User Stories
 
 As someone with interest in backend game design, I want to make a program that procedurally generates a new environment so that users can play multiple sessions without getting bored.
 -Robert Radford
