@@ -3,10 +3,11 @@
 /*IN PROGRESS: build out some of the broad style choices like for; #container > table > tr > td > img {width:Xvw;height:Yvh;}*/
 
 h1 {
-    height: 60px;
+    height: 3vh;
     font-size: 9vh;
     text-align: center;
-    padding-bottom: 35px;
+    margin: auto;
+    padding-bottom: 10vh;
     border: thick solid rgb(107, 124, 103);
     width: 1480px;
     border-radius: 8px;
@@ -49,7 +50,7 @@ h2 {
     font-size: 8vh;
     text-decoration: blink;
     margin-bottom: auto;
-    margin-top: auto;
+    margin-top: 3vh;
 
     /* border: thin solid black; */
 }
@@ -99,8 +100,9 @@ p {
 }
 footer {
     text-align: center;
-    height: 200px;
+    height: 10vh;
     font-size: larger;
     font-family: 'Bubblegum Sans';
-    font-weight: lighter;margin-top: 10px;
+    font-weight: lighter;
+    margin-top: 2vh;
 }
