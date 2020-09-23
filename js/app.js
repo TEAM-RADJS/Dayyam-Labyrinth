@@ -74,7 +74,7 @@ function makeNewMaze(mapSize){
 					triedToStep = 0;
 					madeAStep++;
 					curY-=1;
-					if (madeAStep%120 == 0){
+					if (madeAStep%180 == 0){
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
 						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
 						monsterCount+=1;
@@ -90,7 +90,7 @@ function makeNewMaze(mapSize){
 					triedToStep = 0;
 					madeAStep++;
 					curY+=1;
-					if (madeAStep%120 == 0){
+					if (madeAStep%180 == 0){
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
 						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
 						monsterCount+=1;
@@ -106,7 +106,7 @@ function makeNewMaze(mapSize){
 					triedToStep = 0;
 					madeAStep++;
 					curX+=1;
-					if (madeAStep%120 == 0){
+					if (madeAStep%180 == 0){
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
 						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
 						monsterCount+=1;
@@ -122,7 +122,7 @@ function makeNewMaze(mapSize){
 					triedToStep = 0;
 					madeAStep++;
 					curX-=1;
-					if (madeAStep%120 == 0){
+					if (madeAStep%180 == 0){
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
 						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
 						monsterCount+=1;
@@ -148,7 +148,7 @@ function makeNewMaze(mapSize){
 					mapData.map[curY][curX] = FLOOR;
 				} else {
 
-					if (madeAStep%120 == 0){
+					if (madeAStep%180 == 0){
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
 						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
 						monsterCount+=1;
@@ -192,16 +192,16 @@ function makeNewMaze(mapSize){
 
 function showEnvironment(){
 	
-	function show(increments){
+	function show(valY, valX){
 		try {
-			var checkPosition = mapData.map[(mapData['playerPosition'][0])+increments[0]][(mapData['playerPosition'][1])+increments[1]];
+			var checkPosition = mapData.map[(mapData['playerPosition'][0])+valY][(mapData['playerPosition'][1])+valX];
 		} catch {
 			var checkPosition = 'empty';
 		}
 		
 		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
-		var tileImage = document.getElementById(String(4+increments[0])+'-'+String(4+increments[1]));
-		if (typeof(checkPosition)=='empty') {
+		var tileImage = document.getElementById(String(4+valY)+'-'+String(4+valX));
+		if (checkPosition=='empty') {
 			tileImage.setAttribute('src', 'assets/img/empty.jpg');
 		} else if (checkPosition == FLOOR) {
 			tileImage.setAttribute('src', 'assets/img/floor.jpg');
@@ -212,98 +212,103 @@ function showEnvironment(){
 		} else {
 			tileImage.setAttribute('src', 'assets/img/monster.jpg');
 		}
+		if (checkPosition == FLOOR || checkPosition == SAFE){
+			if (mapData.playerPosition[0]+valY == 0 || mapData.playerPosition[0]+valY == mapData.map.length-1 || mapData.playerPosition[1]+valX == 0 || mapData.playerPosition[1]+valX == mapData.map.length-1){
+				tileImage.setAttribute('src', 'assets/img/forrest.jpeg');
+			}
+		} 			
 	}
 
 	function left(){
 
 		if (curX != 0){
-			show([0, -1]);
+			show(0, -1);
 			if (map[curY][curX-1] != WALL){
 				if (curY != lastRow){
-					show([1, -1]);
+					show(1, -1);
 
 					if (map[curY+1][curX-1] != WALL){
 						if (curY != lastRow-1){
-							show([2, -1]);
+							show(2, -1);
 							
 							if (map[curY+2][curX-1] != WALL){
 								if (curX != 1){
-									show([2, -2]);
+									show(2, -2);
 								}
 								if (curY != lastRow-2){
-									show([3, -1]);
+									show(3, -1);
 								}
 							}
 						}
 						if (curX != 1){
-							show([1, -2]);
+							show(1, -2);
 							
 							if (map[curY+1][curX-2] != WALL){
 								if (curX != 2){
-									show([1, -3]);
+									show(1, -3);
 								}
 								if (curY != lastRow-1){
-									show([2, -2]);
+									show(2, -2);
 								}
 							}
 						}
 					}
 				}
 				if (curY != 0){	
-					show([-1, -1]);
+					show(-1, -1);
 					
 					if (map[curY-1][curX-1] != WALL){
 						if (curY != 1){
-							show([-2, -1]);
+							show(-2, -1);
 							if (map[curY-2][curX-1] != WALL && curX != 2){
 								if (curX != 1){
-									show([-2, -2]);
+									show(-2, -2);
 								}
 								if (curY != 2){
-									show([-3, -1]);
+									show(-3, -1);
 								}
 							}
 						}
 						if (curX != 1){
-							show([-1, -2]);
+							show(-1, -2);
 							if (map[curY-1][curX-2] != WALL){
 								if (curY != 1){
-									show([-2, -2]);
+									show(-2, -2);
 								}
 								if (curX != 2){
-									show([-1, -3]);
+									show(-1, -3);
 								}
 							}
 						}
 					}
 				}
 				if (curX != 1){
-					show([0, -2]);
+					show(0, -2);
 
 					if (map[curY][curX-2] != 0){
 						if (curY != lastRow){
-							show([1, -2]);
+							show(1, -2);
 							if (map[curY+1][curX-2] != WALL && curX != 3){
-								show([1, -3]);
+								show(1, -3);
 							}
 						}
 						if (curY != 0){	
-							show([-1, -2]);
+							show(-1, -2);
 							if (map[curY-1][curX-2] != WALL && curX != 3){
-								show([-1, -3]);
+								show(-1, -3);
 							}
 						}
 						if (curX != 2){
-							show([0, -3]);
+							show(0, -3);
 							if (map[curY][curX-3] != WALL){
 								if (curY != lastRow){
-									show([1, -3]);
+									show(1, -3);
 								}
 								if (curY != 0){	
-									show([-1, -3]);
+									show(-1, -3);
 								}
 								if (curX != 3){
-									show([0, -4]);
+									show(0, -4);
 								}
 							}
 						}
@@ -315,90 +320,90 @@ function showEnvironment(){
 
 	function right(){
 		if (curX != lastCol){
-			show([0, 1]);
+			show(0, 1);
 
 			if (map[curY][curX+1] != WALL){
 				if (curY != lastRow){
-					show([1, 1]);
+					show(1, 1);
 
 					if (map[curY+1][curX+1] != WALL){
 						if (curY != lastRow-1){
-							show([2, 1]);
+							show(2, 1);
 
 							if (map[curY+2][curX+1] != WALL){
 								if (curX != lastCol-1){
-									show([2, 2]);
+									show(2, 2);
 								}
 								if (curY != lastRow-2){
-									show([3, 1]);
+									show(3, 1);
 								}
 							}
 						}
 						if (curX != lastCol-1){
-							show([1, 2]);
+							show(1, 2);
 							if (map[curY+1][curX+2] != WALL){
 								if (curX != lastCol-2){
-									show([1, 3]);
+									show(1, 3);
 								}
 								if (curY != lastRow-1){
-									show([2, 2]);
+									show(2, 2);
 								}
 							}
 						}
 					}
 				}
 				if (curY != 0){	
-					show([-1, 1]);
+					show(-1, 1);
 
 					if (map[curY-1][curX+1] != WALL){
 						if (curY != 1){
-							show([-2, 1]);
+							show(-2, 1);
 
 							if (map[curY-2][curX+1] != WALL){
 								if (curX != lastCol-1){
-									show([-2, 2]);
+									show(-2, 2);
 								}
 								if (curY != 2){
-									show([-3, 1]);
+									show(-3, 1);
 								}
 							}
 						}
 						if (curX != lastCol-1){
-							show([-1, 2]);
+							show(-1, 2);
 							if (map[curY-1][curX+2] != WALL && curY != 1){
-								show([-2, 2]);
+								show(-2, 2);
 							}
 						}
 					}
 				}
 				if (curX != lastCol-1){
-					show([0, 2]);
+					show(0, 2);
 
 					if (map[curY][curX+2] != 0){
 						if (curY != lastRow){
-							show([1, 2]);
+							show(1, 2);
 
 							if (map[curY+1][curX+2] != WALL && curX != lastCol-2){
-								show([1, 3]);
+								show(1, 3);
 							}
 						}
 						if (curY != 0){	
-							show([-1, 2]);
+							show(-1, 2);
 							if (map[curY-1][curX+2] != WALL && curX != lastCol-2){
-								show([-1, 3]);
+								show(-1, 3);
 							}
 						}
 						if (curX != lastCol-2){
-							show([0, 3]);
+							show(0, 3);
 							if (map[curY][curX+3] != WALL){
 								if (curY != lastRow){
-									show([1, 3]);
+									show(1, 3);
 								}
 								if (curY != 0){	
-									show([-1, 3]);
+									show(-1, 3);
 								}
 								if (curX != lastCol-3){
-									show([0, 4]);
+									show(0, 4);
 								}
 							}
 						}
@@ -410,84 +415,84 @@ function showEnvironment(){
 
 	function up(){
 		if (curY != 0){
-			show([-1, 0]);
+			show(-1, 0);
 
 			if (map[curY-1][curX] != WALL){
 				if (curX != lastCol){
-					show([-1, 1]);
+					show(-1, 1);
 
 					if (map[curY-1][curX+1] != WALL){
 						if (curX != lastCol-1){
-							show([-1, 2]);
+							show(-1, 2);
 
 							if (map[curY-1][curX+2] != WALL){
 								if (curY != 1){
-									show([-2, 2]);
+									show(-2, 2);
 								}
 								if (curX != lastCol-2){
-									show([-1, 3]);
+									show(-1, 3);
 								}
 							}
 						}
 						if (curY != 1){
-							show([-2, 1]);
+							show(-2, 1);
 							if (map[curY-2][curX+1] != WALL && curX != lastCol-1){
-								show([-2, 2]);
+								show(-2, 2);
 							}
 						}
 					}
 				}
 				if (curX != 0){	
-					show([-1, -1]);
+					show(-1, -1);
 
 					if (map[curY-1][curX-1] != 0){
 						if (curY != 1){
-							show([-2, -1]);
+							show(-2, -1);
 							if (map[curY-2][curX-1] != WALL && curX != 2){
-								show([-2, -2]);
+								show(-2, -2);
 							}
 						}
 						if (curX != 1){
-							show([-1, -2]);
+							show(-1, -2);
 							if (map[curY-1][curX-2] != WALL){
 								if (curY != 1){
-									show([-2, -2]);
+									show(-2, -2);
 								}
 								if (curX != 2){
-									show([-1, -3]);
+									show(-1, -3);
 								}
 							}
 						}
 					}
 				}
 				if (curY != 1){
-					show([-2, 0]);
+					show(-2, 0);
 
 					if (map[curY-2][curX] != WALL){
 						if (curX != lastCol){
-							show([-2, 1]);
+							show(-2, 1);
 
 							if (map[curY-2][curX+1] != WALL && curY != 2){
-								show([-3, 1]);
+								show(-3, 1);
 							}
 						}
 						if (curX != 0){	
-							show([-2, -1]);
+							show(-2, -1);
 							if (map[curY-2][curX-1] != WALL && curY != 2){
-								show([-3, -1]);
+								show(-3, -1);
 							}
 						}
 						if (curY != 2){
-							show([-3, 0]);
+							show(-3, 0);
 							if (map[curY-3][curX] != WALL){
 								if (curX != lastCol){
-									show([-3, 1]);
+									show(-3, 1);
 								}
 								if (curX != 0){	
-									show([-3, -1]);
+									show(-3, -1);
 								}
 								if (curY != 3){
-									show([-4, 0]);
+									show(-4, 0);
 								}
 							}
 						}
@@ -500,88 +505,88 @@ function showEnvironment(){
 	function down(){
 
 		if (curY != lastRow){
-			show([1, 0]);
+			show(1, 0);
 
 			if (map[curY+1][curX] != WALL){
 				if (curX != lastCol){
-					show([1, 1]);
+					show(1, 1);
 
 					if (map[curY+1][curX+1] != WALL){
 						if (curX != lastCol-1){
-							show([1, 2]);
+							show(1, 2);
 
 							if (map[curY+1][curX+2] != WALL){
 								if (curY != lastRow-1){
-									show([2, 2]);
+									show(2, 2);
 								}
 								if (curX != lastCol-2){
-									show([1, 3]);
+									show(1, 3);
 								}
 							}
 						}
 						if (curY != lastRow-1){
-							show([2, 1]);
+							show(2, 1);
 
 							if (map[curY+2][curX+1] != 0 && curX != lastCol-1){
-								show([2, 2]);
+								show(2, 2);
 							}
 						}
 					}
 				}
 				if (curX != 0){	
-					show([1, -1]);
+					show(1, -1);
 
 					if (map[curY+1][curX-1] != WALL){
 						if (curY != lastRow-1){
-							show([2, -1]);
+							show(2, -1);
 							if (map[curY+2][curX-1] != WALL && curX != 2){
-								show([2, -2]);
+								show(2, -2);
 							}
 						}
 						if (curX != 1){
-							show([1, -2]);
+							show(1, -2);
 
 							if (map[curY+1][curX-2] != WALL && curY != lastRow-1){
 								if (curY != lastRow-1){
-									show([2, -2]);
+									show(2, -2);
 								}
 								if (curX != 2){
-									show([1, -3]);
+									show(1, -3);
 								}
 							}
 						}
 					}
 				}
 				if (curY != lastRow-1){
-					show([2, 0]);
+					show(2, 0);
 
 					if (map[curY+2][curX] != WALL){
 						if (curX != lastCol){
-							show([2, 1]);
+							show(2, 1);
 
 							if (map[curY+2][curX+1] != WALL && curY != lastRow-2){
-								show([3, 1]);
+								show(3, 1);
 							}
 						}
 						if (curX != 0){	
-							show([2, -1]);
+							show(2, -1);
 
 							if (map[curY+2][curX-1] != WALL && curY != lastRow-2){
-								show([3, -1]);
+								show(3, -1);
 							}
 						}
 						if (curY != lastRow-2){
-							show([3, 0]);
+							show(3, 0);
 
 							if (map[curY+3][curX] != WALL){
 								if (curX != lastCol){
-									show([3, 1]);
+									show(3, 1);
 								}
 								if (curX != 0){	
-									show([3, -1]);
+									show(3, -1);
 								}
 								if (curY != lastRow-3){
-									show([4, 0]);
+									show(4, 0);
 								}
 							}
 						}
