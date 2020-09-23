@@ -11,8 +11,10 @@ Final Project Code 201
 
 
 ![](assets/Home_Page_Wireframe.png)
+<img src='assets/Home_Page_Wireframe.png'>
 
 ![](assets/Domain_Model)
+<img src='assets/Domain_Model.png'>
 
 ## User Stories
 
