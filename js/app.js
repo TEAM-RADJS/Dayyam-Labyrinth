@@ -631,7 +631,11 @@ function hunterMove(){
 	for (let z = 0; z < setOfMonsters.length; z++) {
 		
 		var sampleMap = [];
+		for (let i = 0; i < sampleMap.length; i++) {
+			sampleMap.pop();
+		}
 		sampleMap = JSON.parse(JSON.stringify(mapData.map));
+		console.log(sampleMap);
 
 		for (let i = 0; i < sampleMap.length; i++){
 			for (let j = 0; j < sampleMap[i].length; j++){
@@ -873,6 +877,6 @@ var startButton = document.getElementById('formsHere');
 startButton.addEventListener('submit', function (e) {
 	e.preventDefault();
 	var audio = new Audio('assets/ScaryHalloween.mp3');
-	audio.play();
+	// audio.play();
 	startGame();
 });
