@@ -824,11 +824,11 @@ function movePlayer(keyPressed) {
 	for (let i = 0; i < 9; i++) {
 		mapData.viewMap.push([]);
 		for (let j = 0; j < 9; j++) {
-			if (typeof(mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]) != 'undefined'){
+			try {
 				mapData.viewMap[i].push((mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]));
-			} else {
+			} catch {
 				mapData.viewMap[i].push(0);
-			}	
+			}
 		}
 	}
 
