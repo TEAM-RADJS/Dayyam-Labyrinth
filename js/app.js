@@ -628,7 +628,8 @@ function hunterMove(){
 
 	for (let z = 0; z < setOfMonsters.length; z++) {
 		
-		var sampleMap = JSON.parse(JSON.stringify(mapData.map));
+		var sampleMap = [];
+		sampleMap = JSON.parse(JSON.stringify(mapData.map));
 
 		for (let i = 0; i < sampleMap.length; i++){
 			for (let j = 0; j < sampleMap[i].length; j++){
@@ -842,10 +843,11 @@ function startGame(){
 	var containerDiv = document.getElementById('containerDiv');
 	containerDiv.innerHTML = '';
 	//TODO: use DOM to start audio
-	var loopAudio = document.getElementById("formsHere");
-	loopAudio.addEventListener('submit', function (playAudio) {
-		playAudio.play();
-	});
+	// var loopAudio = document.getElementById("formsHere");
+	// loopAudio.addEventListener('submit', function (playAudio) {
+	// 	playAudio.preventDefault();
+	// 	playAudio.play();
+	// });
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	var gameTable = document.createElement('table');
 	containerDiv.append(gameTable);
