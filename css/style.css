@@ -62,7 +62,7 @@ button {
 }
 
 form {
-
+  
     text-align: center;
 
 }
@@ -72,7 +72,7 @@ a {
     width: 100px;
     margin: auto;
     color: antiquewhite;
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Grenze Gotisch', cursive;
 }
 p {
@@ -84,6 +84,6 @@ p {
     margin-bottom: auto;
     color: antiquewhite;
     font-size: 20px;
-    font-family: 'Grenze Gotisch', cursive;
+    font-family: 'Grenze Gotisch';
  
 }
