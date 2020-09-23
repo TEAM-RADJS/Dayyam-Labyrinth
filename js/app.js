@@ -845,7 +845,7 @@ function startGame(){
 	var loopAudio = document.getElementById("formsHere");
 	loopAudio.addEventListener('submit', function (playAudio) {
 		playAudio.play();
-	}
+	});
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	var gameTable = document.createElement('table');
 	containerDiv.append(gameTable);
