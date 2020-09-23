@@ -10,7 +10,9 @@ Final Project Code 201
 - Skill Building, Problem Solving, Brain-workout, Puzzle
 - Making minimum viability- maze solving way out.
 
-![Home Page Wireframe](assets/Home_Page_Wireframe.png)
+<img src='assets/Home_Page_Wireframe.PNG'>
+
+<img src='assets/Domain_Model.PNG'>
 
 ### User Stories
 
