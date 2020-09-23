@@ -186,8 +186,6 @@ function makeNewMaze(mapSize){
 			}
 		}
 	}
-	console.log(mapData.playerPosition);
-	console.log(mapData.map);
 }
 
 function showEnvironment(){
@@ -641,8 +639,6 @@ function hunterMove(){
 			}
 		}
 
-		console.log(monsterY, monsterX);
-
 		var didSomething = true;
 		var steps = 0;
 		var monsterDataAccess = eval('mapData.monster'+z+'Origin');
@@ -760,7 +756,6 @@ function hunterMove(){
 
 function movePlayer(keyPressed) {
 
-	console.log(keyPressed);
 	var acceptedMoves = ['w', 'a', 's', 'd', ' '];
 	var oldYPosition = mapData.playerPosition[0];
 	var oldXPosition = mapData.playerPosition[1];
