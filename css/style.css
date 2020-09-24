@@ -59,6 +59,17 @@ input[type=submit] {
     border: 2px solid #f44336; */
     text-align: center;
     margin: auto;
+<<<<<<< HEAD
+    padding: 15px 32px;
+    
+}
+
+form {
+  
+    text-align: center;
+
+}
+=======
     margin-left: 580px;
     margin-right: auto;
     background-color: #f01e1e;
@@ -67,14 +78,20 @@ input[type=submit] {
     font-family: 'Grenze Gotisch', cursive;
     font-size: 20px;
    }
+>>>>>>> 59ff13845b88fde060c8075866963bb5d2133f2e
 
 a {
     text-align: center;
     width: 100px;
     margin: auto;
+<<<<<<< HEAD
+    color: antiquewhite;
+    font-size: 25px;
+=======
     margin-left: 610px;
     color: rgb(121, 7, 7);
     font-size: 20px;
+>>>>>>> 59ff13845b88fde060c8075866963bb5d2133f2e
     font-family: 'Grenze Gotisch', cursive;
     font-weight: bold;
 }
@@ -87,6 +104,6 @@ p {
     margin-bottom: auto;
     color: antiquewhite;
     font-size: 20px;
-    font-family: 'Grenze Gotisch', cursive;
+    font-family: 'Grenze Gotisch';
  
 }
