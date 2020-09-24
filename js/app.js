@@ -8,9 +8,10 @@ function gameOver(){
 	theTable.innerHTML = '';
 	theTable.setAttribute('class', 'lostScreen');
 	// theTable.setAttribute('style', 'background-image:url(assets/img/trapped_person.jpeg);');
-	var gameOverText = document.createElement('h1');
+	var gameOverText = document.createElement('a');
 	theTable.append(gameOverText);
 	gameOverText.textContent = 'You\'ve been captured!';
+	gameOverText.setAttribute('href', 'game.html')
 }
 
 function escapedScreen() {
@@ -18,9 +19,10 @@ function escapedScreen() {
 	theTable.innerHTML = '';
 	theTable.setAttribute('class', 'victoryScreen');
 	// theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
-	var gameOverText = document.createElement('h1');
+	var gameOverText = document.createElement('a');
 	theTable.append(gameOverText);
 	gameOverText.textContent = 'You escaped!';
+	gameOverText.setAttribute('href', 'game.html')
 }
 
  // May we add comments throughout this code project? yes :?
