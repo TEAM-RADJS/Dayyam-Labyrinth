@@ -1,7 +1,32 @@
+body {
+	height:100vh;
+	width:100vw;
+	background-image: url('/assets/img/dark_texture.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin:0px;
+}
+
+#goHome {
+	color: blue;
+	font-size: 18px;
+	background-color: black;
+	width: 20vh;
+	height:3vh;
+	border-radius: 0px 0px 30px 0px;
+	display: inline-block;
+	margin-bottom: 1vh;
+	font-family: 'Imprint MT Shadow';
+}
+
 div {
 	width: 90vh;
 	height: 90vh;
 	margin:auto;
+	border:8px solid black;
+	border-radius: 30px;
+	padding:.5vw;
+	background-color: black;
 }
 
 img {
@@ -16,19 +41,31 @@ table, tr, td {
 	border-spacing: 0px;
 	margin:0px;
 	border:0px;
+	line-height:0px;
 }
 
-.victoryscreen>h1 {
-	width: 100%;
-	
+
+.victoryScreen {
+	background-image: url('/assets/img/scary_house.jpeg');
+	background-size: cover;
 }
 
-body {
-
+.victoryScreen > a {
+	position: absolute;
+	font-size: 8vh;
+	color: peachpuff;
+	font-family: 'Blackadder ITC';
+	margin-left: 45vh;
+	margin-top:80vh;
+	transform: translate(-50%, -50%);
 }
 
-html {
-	
+#containerDiv > a:hover span {
+	display: none;
+}
+
+#containerDiv > a:hover:before {
+	content: 'Try again?';
 }
 
 .lostScreen {
@@ -36,7 +73,72 @@ html {
 	background-size: cover;
 }
 
+.lostScreen > a {
+	position: absolute;
+	margin-top: 10vh;
+	margin-left: 10vh;
+	font-size: 7vh;
+	color: maroon;
+	font-family: 'Blackadder ITC';
+}
+
 .startingScreen {
 	background-image: url('/assets/img/introPicture.jpg');
 	background-size: cover;
+}
+
+.startingScreen > #formsHere {
+	margin-top: 70vh;
+	margin-left: 8vh;
+}
+
+#formsHere > #title {
+	font-size: 6vh;
+	color: maroon;
+	font-family: 'Blackadder ITC';
+	margin-left: 18vh;
+}
+
+#startButton {
+	margin-left: 2vw;
+}
+
+#formsHere > input {
+	color:maroon;
+	margin-top: 2vh;
+	height:4vh;
+	width: 25vh;
+	font-size: 2vh;
+	font-family: 'Imprint MT Shadow';
+	text-align: center;
+	background-color: black;
+	border: 5px;
+}
+
+#explainInput {
+	color:maroon;
+	margin-top: 2vh;
+	height:4vh;
+	width: 10vh;
+	font-size: 2vh;
+	font-family: 'Imprint MT Shadow';
+	text-align: center;
+	background-color: black;
+	margin-left: 2vw;
+}
+
+img[id='0-0'] {
+	border-radius: 30px 0px 0px 0px;
+}
+
+img[id='0-8'] {
+	border-radius: 0px 30px 0px 0px;
+}
+
+img[id='8-0'] {
+	border-radius: 0px 0px 0px 30px;
+}
+
+img[id='8-8'] {
+	border-radius: 0px 0px 30px 0px;
 }
