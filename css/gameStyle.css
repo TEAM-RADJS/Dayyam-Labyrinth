@@ -88,19 +88,24 @@ table, tr, td {
 }
 
 .startingScreen > #formsHere {
-	margin-top: 70vh;
-	margin-left: 8vh;
+	margin-top: 65vh;
+	margin-left: 5vh;
+	background-color: rgba(0, 0, 0, .5);
+	width: 80vh;
 }
 
 #formsHere > #title {
+	display: inline-block;
 	font-size: 6vh;
 	color: maroon;
 	font-family: 'Blackadder ITC';
-	margin-left: 18vh;
+	margin-left: 5vh;
+	width: 70vh;
+	height: 8vh;
 }
 
 #startButton {
-	margin-left: 2vw;
+	margin-left: 1vh;
 }
 
 #formsHere > input {
@@ -111,21 +116,51 @@ table, tr, td {
 	font-size: 2vh;
 	font-family: 'Imprint MT Shadow';
 	text-align: center;
-	background-color: black;
+	background-color: transparent;
 	border: 5px;
+	padding: 0px;
 }
 
-#explainInput {
+#formsHere > select {
 	color:maroon;
 	margin-top: 2vh;
 	height:4vh;
-	width: 10vh;
+	width: 25vh;
 	font-size: 2vh;
 	font-family: 'Imprint MT Shadow';
 	text-align: center;
-	background-color: black;
-	margin-left: 2vw;
+	background-color: transparent;
+	border: 5px;
 }
+
+#genderLabel {
+	margin-left: 10vw;
+	width: 25vh;
+}
+
+#genderCheck {
+	margin-left: 10vh;
+}
+
+#explainInput {
+	margin-left: 1vh;
+	display: inline-block;
+	width:25vh;
+}
+
+#askSize {
+	margin-left: 1vh;
+}
+
+#formsHere > label {
+	color:maroon;
+	margin-top: 2vh;
+	font-size: 2vh;
+	font-family: 'Imprint MT Shadow';
+	text-align: center;
+	background-color: transparent;
+}
+
 
 img[id='0-0'] {
 	border-radius: 30px 0px 0px 0px;
