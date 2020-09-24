@@ -1,0 +1,42 @@
+div {
+	width: 90vh;
+	height: 90vh;
+	margin:auto;
+}
+
+img {
+	width:10vh;
+	height:10vh;
+	padding: 0px;
+	margin:0px;
+}
+
+table, tr, td {
+	padding: 0px;
+	border-spacing: 0px;
+	margin:0px;
+	border:0px;
+}
+
+.victoryscreen>h1 {
+	width: 100%;
+	
+}
+
+body {
+
+}
+
+html {
+	
+}
+
+.lostScreen {
+	background-image: url('/assets/img/trapped_person.jpeg');
+	background-size: cover;
+}
+
+.startingScreen {
+	background-image: url('/assets/img/introPicture.jpg');
+	background-size: cover;
+}
