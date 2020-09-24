@@ -149,11 +149,14 @@ function makeNewMaze(mapSize){
 				if (mapData.map[curY][curX] != SAFE && String(mapData.map[curY][curX]).charAt(0) != '4' && mapData.map[curY][curX] != FLOOR && madeAStep%20 != 0){
 					mapData.map[curY][curX] = FLOOR;
 				} else {
-
 					if (madeAStep%180 == 0){
-						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
-						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
-						monsterCount+=1;
+						if (String(mapData.map[curY][curX]).charAt(0) != '4') {
+							mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
+							eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
+							monsterCount+=1;
+						} else {
+							madeAStep--;
+						}
 					} else if (madeAStep%20 == 0){
 						mapData.map[curY][curX] = SAFE;
 					}
@@ -638,12 +641,6 @@ function hunterMove(){
 
 	for (let z = 0; z < setOfMonsters.length; z++) {
 		
-		// var sampleMap = [];
-
-		// for (let i = 0; i < sampleMap.length; i++) {
-		// 	sampleMap.pop();
-		// }
-
 		var sampleMap = JSON.parse(JSON.stringify(mapData.map));
 
 		for (let i = 0; i < sampleMap.length; i++){
@@ -776,6 +773,7 @@ function hunterMove(){
 }
 
 function navigateMe(){
+
 	var helperMap = JSON.parse(JSON.stringify(mapData.map));
 
 	for (let i = 0; i < helperMap.length; i++){
