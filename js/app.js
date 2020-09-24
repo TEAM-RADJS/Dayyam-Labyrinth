@@ -1,5 +1,7 @@
 //javascript
 mapData = {};
+selfGender = true;
+selfImage = 'assets/img/self.jpg';
 
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
@@ -162,7 +164,11 @@ function makeNewMaze(mapSize){
 							madeAStep--;
 						}
 					} else if (madeAStep%20 == 0){
-						mapData.map[curY][curX] = SAFE;
+						if (String(mapData.map[curY][curX]).charAt(0) != '4') {
+							mapData.map[curY][curX] = SAFE;
+						} else {
+							madeAStep--;
+						}
 					}
 				}
 				triedToStep = 0;
@@ -219,7 +225,7 @@ function showEnvironment(){
 		} else if (checkPosition == SAFE) {
 			tileImage.setAttribute('src', 'assets/img/safe.jpg');
 		} else {
-			tileImage.setAttribute('src', 'assets/img/monster.jpg');
+			tileImage.setAttribute('src', 'assets/img/monster.png');
 		}
 		if (checkPosition == FLOOR || checkPosition == SAFE){
 			if (mapData.playerPosition[0]+valY == 0 || mapData.playerPosition[0]+valY == mapData.map.length-1 || mapData.playerPosition[1]+valX == 0 || mapData.playerPosition[1]+valX == mapData.map.length-1){
@@ -624,10 +630,9 @@ function showEnvironment(){
 	if (mapData.map[mapData.playerPosition[0]][mapData.playerPosition[1]] == 2) {
 		selfTile.setAttribute('src', 'assets/img/safe.jpg');
 	} else {
-		selfTile.setAttribute('src', 'assets/img/self.jpg');
+		selfTile.setAttribute('src', selfImage);
 	}
 
-	
 
 	left();
 		
@@ -646,6 +651,7 @@ function hunterMove(){
 	for (let z = 0; z < setOfMonsters.length; z++) {
 		
 		var sampleMap = JSON.parse(JSON.stringify(mapData.map));
+
 
 		for (let i = 0; i < sampleMap.length; i++){
 			for (let j = 0; j < sampleMap[i].length; j++){
@@ -782,7 +788,7 @@ function navigateMe(){
 
 	for (let i = 0; i < helperMap.length; i++){
 		for (let j = 0; j < helperMap[i].length; j++){
-			if (mapData.map[i][j] == FLOOR){
+			if (mapData.map[i][j] == FLOOR || mapData.map[i][j] == SAFE){
 				if (i == 0 || i == mapData.map.length-1 || j == 0 || j == mapData.map.length-1){
 					var endGoalY = i;
 					var endGoalX = j;
@@ -865,6 +871,11 @@ function movePlayer(keyPressed) {
 	if (keyPressed === 'w') {
 		if (theMap[(oldYPosition)-1][(oldXPosition)] === FLOOR || theMap[(oldYPosition)-1][(oldXPosition)] === SAFE) { // is traversible
 			oldYPosition -= 1;
+			if (selfGender == true) {
+				selfImage = 'assets/img/male_walk_up.png';
+			} else {
+				selfImage = 'assets/img/female_walk_up.png';
+			}
 		} else if (theMap[(oldYPosition)-1][(oldXPosition)] === WALL) {
 			return;
 		} else {
@@ -872,9 +883,14 @@ function movePlayer(keyPressed) {
 		}
 	}
 
-	if (keyPressed === 's') {
+	else if (keyPressed === 's') {
 		if (theMap[(oldYPosition)+1][(oldXPosition)] === FLOOR || theMap[(oldYPosition)+1][(oldXPosition)] === SAFE) {
 			oldYPosition += 1;
+			if (selfGender == true) {
+				selfImage = 'assets/img/male_walk_down.png';
+			} else {
+				selfImage = 'assets/img/female_walk_down.png';
+			}
 		} else if (theMap[(oldYPosition)+1][(oldXPosition)] === WALL) {
 			return;
 		} else {
@@ -882,9 +898,14 @@ function movePlayer(keyPressed) {
 		}
 	}
 
-	if (keyPressed === 'a') {
+	else if (keyPressed === 'a') {
 		if (theMap[(oldYPosition)][(oldXPosition)-1] === FLOOR || theMap[(oldYPosition)][(oldXPosition)-1] === SAFE) {
 			oldXPosition -= 1;
+			if (selfGender == true) {
+				selfImage = 'assets/img/male_walk_left.png';
+			} else {
+				selfImage = 'assets/img/female_walk_left.png';
+			}
 		} else if (theMap[(oldYPosition)][(oldXPosition-1)] === WALL) {
 			return;
 		} else {
@@ -892,13 +913,26 @@ function movePlayer(keyPressed) {
 		}
 	}
 
-	if (keyPressed === 'd') {
+	else if (keyPressed === 'd') {
 		if (theMap[(oldYPosition)][(oldXPosition)+1] === FLOOR || theMap[(oldYPosition)][(oldXPosition)+1] === SAFE) {
 			oldXPosition += 1;
+			if (selfGender == true) {
+				selfImage = 'assets/img/male_walk_right.png';
+			} else {
+				selfImage = 'assets/img/female_walk_right.png';
+			}
 		} else if (theMap[(oldYPosition)][(oldXPosition+1)] === WALL) {
 			return;
 		} else {
 			gameOver();
+		}
+	}
+
+	else {
+		if (selfGender == true) {
+			selfImage = 'assets/img/male_space_tile.png';
+		} else {
+			selfImage = 'assets/img/female_space_tile.png';
 		}
 	}
 
@@ -931,6 +965,15 @@ function movePlayer(keyPressed) {
 function startGame(){
 	var askSize = document.getElementById('askSize');
 	var mapSize = askSize.value;
+	var genderCheck = document.getElementById('genderCheck');
+	if (genderCheck.value == 'Female') {
+		selfGender = false;
+	}
+	if (selfGender == true) {
+		selfImage = 'assets/img/male_space_tile.png';
+	} else {
+		selfImage = 'assets/img/female_space_tile.png';
+	}
 	makeNewMaze(mapSize);
 	var containerDiv = document.getElementById('containerDiv');
 	containerDiv.setAttribute('class', 'gamePlay');
