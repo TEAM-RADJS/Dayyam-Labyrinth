@@ -58,6 +58,14 @@ table, tr, td {
 	background-size: cover;
 }
 
+.lostScreen > h1 {
+	margin-top: 10vh;
+	margin-left: 10vh;
+	font-size: 7vh;
+	color: maroon;
+	font-family: 'Blackadder ITC';
+}
+
 .startingScreen {
 	background-image: url('/assets/img/introPicture.jpg');
 	background-size: cover;
@@ -65,11 +73,27 @@ table, tr, td {
 
 .startingScreen > #formsHere {
 	margin-top: 70vh;
-	margin-left: 25vh;
+	margin-left: 15vh;
 }
 
 #formsHere > label {
-	font-size: 8vh;
+	font-size: 6vh;
 	color: maroon;
 	font-family: 'Blackadder ITC';
+	margin-left: 10vh;
+}
+
+#startButton {
+	margin-left: 7vh;
+}
+
+#formsHere > input {
+	color:maroon;
+	margin-top: 2vh;
+	height:4vh;
+	width: 25vh;
+	font-size: 2vh;
+	font-family: 'Imprint MT Shadow';
+	background-color: black;
+	border: 5px;
 }
