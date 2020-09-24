@@ -748,19 +748,19 @@ function hunterMove(){
 			mapData.map[monsterY][monsterX] = 1;
 			monsterY += 1;
 			mapData.map[monsterY][monsterX] = parseInt('4'+z);
-		} else if (sampleMap[monsterY-1][monsterX] == steps-1) {
-			mapData.map[monsterY][monsterX] = 1;
-			monsterY -= 1;
-			mapData.map[monsterY][monsterX] = parseInt('4'+z);
 		} else if (sampleMap[monsterY][monsterX+1] == steps-1) {
 			mapData.map[monsterY][monsterX] = 1;
 			monsterX += 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
+		} else if (sampleMap[monsterY-1][monsterX] == steps-1) {
+			mapData.map[monsterY][monsterX] = 1;
+			monsterY -= 1;
 			mapData.map[monsterY][monsterX] = parseInt('4'+z);
 		} else if (sampleMap[monsterY][monsterX-1] == steps-1) {
 			mapData.map[monsterY][monsterX] = 1;
 			monsterX -= 1;
 			mapData.map[monsterY][monsterX] = parseInt('4'+z);
-		}
+		} 
 		if (mapData.playerPosition[0] == monsterY && mapData.playerPosition[1] == monsterX) {
 			gameOver();
 		}
