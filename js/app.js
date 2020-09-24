@@ -6,7 +6,8 @@ function gameOver(){
 	//Thoughts here?
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
-	theTable.setAttribute('style', 'background-image:url(assets/img/trapped_person.jpeg);');
+	theTable.setAttribute('class', 'lostScreen');
+	// theTable.setAttribute('style', 'background-image:url(assets/img/trapped_person.jpeg);');
 	var gameOverText = document.createElement('h1');
 	theTable.append(gameOverText);
 	gameOverText.textContent = 'You\'ve been captured!';
@@ -15,7 +16,8 @@ function gameOver(){
 function escapedScreen() {
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
-	theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
+	theTable.setAttribute('class', 'victoryScreen');
+	// theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
 	var gameOverText = document.createElement('h1');
 	theTable.append(gameOverText);
 	gameOverText.textContent = 'You escaped!';
@@ -115,7 +117,7 @@ function makeNewMaze(mapSize){
 					}
 				}
 			} else {
-				triedToStep++;
+				triedToStep+=1;
 				if (mapData.map[curY][curX-1] == WALL && (mapData.map[curY+1][curX-1] != FLOOR || mapData.map[curY-1][curX-1] != FLOOR)){
 					triedToStep = 0;
 					madeAStep++;
@@ -628,8 +630,13 @@ function hunterMove(){
 
 	for (let z = 0; z < setOfMonsters.length; z++) {
 		
-		var sampleMap = [];
-		sampleMap = JSON.parse(JSON.stringify(mapData.map));
+		// var sampleMap = [];
+
+		// for (let i = 0; i < sampleMap.length; i++) {
+		// 	sampleMap.pop();
+		// }
+
+		var sampleMap = JSON.parse(JSON.stringify(mapData.map));
 
 		for (let i = 0; i < sampleMap.length; i++){
 			for (let j = 0; j < sampleMap[i].length; j++){
@@ -741,24 +748,98 @@ function hunterMove(){
 			mapData.map[monsterY][monsterX] = 1;
 			monsterY += 1;
 			mapData.map[monsterY][monsterX] = parseInt('4'+z);
-		} else if (sampleMap[monsterY-1][monsterX] == steps-1) {
-			mapData.map[monsterY][monsterX] = 1;
-			monsterY -= 1;
-			mapData.map[monsterY][monsterX] = parseInt('4'+z);
 		} else if (sampleMap[monsterY][monsterX+1] == steps-1) {
 			mapData.map[monsterY][monsterX] = 1;
 			monsterX += 1;
+			mapData.map[monsterY][monsterX] = parseInt('4'+z);
+		} else if (sampleMap[monsterY-1][monsterX] == steps-1) {
+			mapData.map[monsterY][monsterX] = 1;
+			monsterY -= 1;
 			mapData.map[monsterY][monsterX] = parseInt('4'+z);
 		} else if (sampleMap[monsterY][monsterX-1] == steps-1) {
 			mapData.map[monsterY][monsterX] = 1;
 			monsterX -= 1;
 			mapData.map[monsterY][monsterX] = parseInt('4'+z);
-		}
+		} 
 		if (mapData.playerPosition[0] == monsterY && mapData.playerPosition[1] == monsterX) {
 			gameOver();
 		}
 	}
 }
+
+function navigateMe(){
+	var helperMap = JSON.parse(JSON.stringify(mapData.map));
+
+	for (let i = 0; i < helperMap.length; i++){
+		for (let j = 0; j < helperMap[i].length; j++){
+			if (mapData.map[i][j] == FLOOR){
+				if (i == 0 || i == mapData.map.length-1 || j == 0 || j == mapData.map.length-1){
+					var endGoalY = i;
+					var endGoalX = j;
+				}
+			}
+			if (helperMap[i][j] == FLOOR || helperMap[i][j] == SAFE || String(helperMap[i][j]).charAt(0) == '4'){
+				helperMap[i][j] = 'f';
+			} else {
+				helperMap[i][j] = 'w';
+			}
+		}
+	}
+
+	var didSomething = true;
+	var steps = 0;
+		
+	helperMap[endGoalY][endGoalX] = steps;
+
+	while (helperMap[mapData.playerPosition[0]][mapData.playerPosition[1]] == "f") {
+		if (didSomething == false) {
+			break;
+		}
+		didSomething = false;
+		for (let i = 0; i < helperMap.length; i++){
+			for (let j = 0; j < helperMap[i].length; j++){
+				if (helperMap[i][j] == steps){
+					if (i != 0){
+						if (helperMap[i-1][j] == 'f'){
+							helperMap[i-1][j] = steps+1;
+							didSomething = true;
+						}
+					}
+					if (i != helperMap.length-1){
+						if (helperMap[i+1][j] == 'f'){
+							helperMap[i+1][j] = steps+1;
+							didSomething = true;
+						}
+					}
+					if (j != 0){
+						if (helperMap[i][j-1] == 'f'){
+							helperMap[i][j-1] = steps+1;
+							didSomething = true;
+						}
+					}
+					if (j != helperMap[0].length-1){
+						if (helperMap[i][j+1] == 'f'){
+							helperMap[i][j+1] = steps+1;
+							didSomething = true;
+						}
+					}
+				}
+			}
+		}
+		steps++;
+	}
+
+	if (helperMap[mapData.playerPosition[0]+1][mapData.playerPosition[1]] == steps-1){
+		console.log('down');
+	} else if (helperMap[mapData.playerPosition[0]-1][mapData.playerPosition[1]] == steps-1) {
+		console.log('up');
+	} else if (helperMap[mapData.playerPosition[0]][mapData.playerPosition[1]+1] == steps-1) {
+		console.log('right');
+	} else if (helperMap[mapData.playerPosition[0]][mapData.playerPosition[1]-1] == steps-1) {
+		console.log('left');
+	}
+}
+
 
 function movePlayer(keyPressed) {
 
@@ -819,6 +900,7 @@ function movePlayer(keyPressed) {
 	}
 
 	hunterMove();
+	navigateMe();
 
 	mapData.viewMap = [];
 
@@ -843,11 +925,7 @@ function startGame(){
 	var containerDiv = document.getElementById('containerDiv');
 	containerDiv.innerHTML = '';
 	//TODO: use DOM to start audio
-	// var loopAudio = document.getElementById("formsHere");
-	// loopAudio.addEventListener('submit', function (playAudio) {
-	// 	playAudio.preventDefault();
-	// 	playAudio.play();
-	// });
+	
 	//TODO: Use DOM to identify #gamePlayTable and assign it to a variable
 	var gameTable = document.createElement('table');
 	containerDiv.append(gameTable);
@@ -875,5 +953,7 @@ var startButton = document.getElementById('formsHere');
 // starts the game when a submit takes place (startButton clicked)
 startButton.addEventListener('submit', function (e) {
 	e.preventDefault();
+	var audio = new Audio('assets/ScaryHalloween.mp3');
+	// audio.play();
 	startGame();
 });
