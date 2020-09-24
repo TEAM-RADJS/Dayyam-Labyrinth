@@ -2,14 +2,18 @@
 
 /*IN PROGRESS: build out some of the broad style choices like for; #container > table > tr > td > img {width:Xvw;height:Yvh;}*/
 
+header {
+  margin-top: 2vh;
+}
+
 h1 {
     height: 3vh;
-    font-size: 9vh;
+    font-size: 6vw;
     text-align: center;
     margin: auto;
     padding-bottom: 10vh;
     border: thick solid rgb(107, 124, 103);
-    width: 1480px;
+    width: 90vw;
     border-radius: 8px;
     text-shadow: 2px 2px 5px red;
     box-shadow: 10px 10px 5px darkgrey;
@@ -35,22 +39,23 @@ h1 {
 body {
         /* background-image: linear-gradient(-90deg, black, grey); */
        background-image: url(https://i.pinimg.com/564x/d1/5d/fc/d15dfc114fdc960e17d3e02710dbcbe1.jpg);
-       background-size: cover; 
-       height: calc(100vh - 300vh);
+       background-size: cover;
+       height: 100vh;
+       width: 100vw;
 }
 
 h2 {
     text-align: center;
     font-weight: 300;
-    height: 15vh;
+    height: 10vh;
     color:red;
     text-shadow: 2px 2px 5px black;
     font-style: normal;
     font-family: 'Grenze Gotisch', cursive;
-    font-size: 8vh;
+    font-size: 5vw;
     text-decoration: blink;
     margin-bottom: auto;
-    margin-top: 3vh;
+    margin-top: 5vh;
 
     /* border: thin solid black; */
 }
@@ -60,49 +65,49 @@ input[type=submit] {
     color: black; 
     border: 2px solid #f44336; */
     text-align: center;
-    margin: auto;
-    margin-left: 645px;
-    margin-right: auto;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    width:20vw;
+    margin-top: 5vh;
+    margin-left: 40vw;
     background-color: rgb(214, 34, 34);
     color: black;
     font-weight: bold;
     font-family: 'Grenze Gotisch', cursive;
-    font-size: 30px;
+    font-size: 2vw;
    }
 
 a {
+    display: block;
     text-align: center;
-    width: 100px;
-    margin: auto;
-    margin-left: 700px;
-    margin-bottom: auto;
-    margin-top: auto;
+    width: 20vw;
+    margin-left: 40vw;
+    margin-top: 2vh;
     color: red;
-     text-shadow: 2px 2px 5px black;
-    font-size: 25px;
+    text-shadow: 2px 2px 5px black;
+    font-size: 1.5vw;
     font-family: 'Grenze Gotisch', cursive;
     font-weight: bold;
 
 }
 p {
     text-align: center;
-    width: 550px;
+    -webkit-text-stroke: .07vw black;
+    letter-spacing: .08vw;
+    width: 60vw;
     margin: auto;
-    margin-top: 20px;
-    margin-bottom: auto;
-    color: rgb(23, 16, 24);
-    font-size: 23px;
+    margin-top: 5vh;
+    color: white;
+    font-size: 1.5vw;
     font-family: 'Bubblegum Sans';
     font-weight: lighter;
 
 }
 footer {
     text-align: center;
+    color: white;
+    -webkit-text-stroke: .07vw black;
     height: 10vh;
-    font-size: larger;
+    font-size: 1.3vw;
     font-family: 'Bubblegum Sans';
     font-weight: lighter;
-    margin-top: 2vh;
+    margin-top: 3vh;
 }
