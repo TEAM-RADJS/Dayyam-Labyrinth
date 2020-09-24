@@ -612,7 +612,13 @@ function showEnvironment(){
 	}
 	//Robert TODO: translate the printEnvironment function from Dungeon_Game into javaScript here
 	var selfTile = document.getElementById(String(4)+'-'+String(4));
-	selfTile.setAttribute('src', 'assets/img/self.jpg')
+	if (mapData.map[mapData.playerPosition[0]][mapData.playerPosition[1]] == 2) {
+		selfTile.setAttribute('src', 'assets/img/safe.jpg');
+	} else {
+		selfTile.setAttribute('src', 'assets/img/self.jpg');
+	}
+
+	
 
 	left();
 		
