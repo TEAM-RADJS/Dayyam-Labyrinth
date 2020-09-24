@@ -9,7 +9,7 @@ body {
 
 #goHome {
 	color: blue;
-	font-size: 18px;
+	font-size: 2vh;
 	background-color: black;
 	width: 20vh;
 	height:3vh;
@@ -17,6 +17,21 @@ body {
 	display: inline-block;
 	margin-bottom: 1vh;
 	font-family: 'Imprint MT Shadow';
+	text-align: center;
+}
+
+#goAbout {
+	color: blue;
+	font-size: 2vh;
+	background-color: black;
+	width: 20vh;
+	height:3vh;
+	border-radius: 0px 0px 30px 30px;
+	display: inline-block;
+	margin-bottom: 1vh;
+	font-family: 'Imprint MT Shadow';
+	margin-left: 5vh;
+	text-align: center;
 }
 
 div {
