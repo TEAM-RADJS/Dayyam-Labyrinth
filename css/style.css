@@ -31,9 +31,9 @@ h1 {
    }
 
 body {
-        background-image: linear-gradient(-90deg, black, grey);
-       /* background-image: url(https://i.pinimg.com/564x/d1/5d/fc/d15dfc114fdc960e17d3e02710dbcbe1.jpg); */
-       /* background-size: cover;  */
+        /* background-image: linear-gradient(-90deg, black, grey); */
+       background-image: url(https://i.pinimg.com/564x/d1/5d/fc/d15dfc114fdc960e17d3e02710dbcbe1.jpg);
+       background-size: cover; 
        height: calc(100vh - 300px);
 }
 

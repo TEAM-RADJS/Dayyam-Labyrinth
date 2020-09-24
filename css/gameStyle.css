@@ -1,11 +1,11 @@
 div {
-	width: 90vw;
+	width: 90vh;
 	height: 90vh;
-	margin-left:5vw;
+	margin:auto;
 }
 
 img {
-	width:10vw;
+	width:10vh;
 	height:10vh;
 	padding: 0px;
 	margin:0px;
@@ -20,4 +20,14 @@ table, tr, td {
 
 .victoryscreen>h1 {
 	
+}
+
+.lostScreen {
+	background-image: url('/assets/img/trapped_person.jpeg');
+	background-size: cover;
+}
+
+.startingScreen {
+	background-image: url('/assets/img/introPicture.jpg');
+	background-size: cover;
 }
