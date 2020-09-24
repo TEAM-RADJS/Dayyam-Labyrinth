@@ -9,15 +9,20 @@ body {
 
 a {
 	color: blue;
-	font-size: 24px;
+	font-size: 18px;
 	background-color: black;
+	width: 14vw;
+	height:3vh;
+	border-radius: 0px 0px 30px 0px;
+	display: inline-block;
+	margin-bottom: 1vh;
 }
 
 div {
 	width: 90vh;
 	height: 90vh;
 	margin:auto;
-	border:6px solid black;
+	border:8px solid black;
 	border-radius: 30px;
 	padding:.5vw;
 	background-color: black;
@@ -58,6 +63,14 @@ table, tr, td {
 	background-size: cover;
 }
 
+.lostScreen > h1 {
+	margin-top: 10vh;
+	margin-left: 10vh;
+	font-size: 7vh;
+	color: maroon;
+	font-family: 'Blackadder ITC';
+}
+
 .startingScreen {
 	background-image: url('/assets/img/introPicture.jpg');
 	background-size: cover;
@@ -65,5 +78,56 @@ table, tr, td {
 
 .startingScreen > #formsHere {
 	margin-top: 70vh;
-	margin-left: 25vh;
+	margin-left: 8vh;
+}
+
+#formsHere > #title {
+	font-size: 6vh;
+	color: maroon;
+	font-family: 'Blackadder ITC';
+	margin-left: 18vh;
+}
+
+#startButton {
+	margin-left: 2vw;
+}
+
+#formsHere > input {
+	color:maroon;
+	margin-top: 2vh;
+	height:4vh;
+	width: 25vh;
+	font-size: 2vh;
+	font-family: 'Imprint MT Shadow';
+	text-align: center;
+	background-color: black;
+	border: 5px;
+}
+
+#explainInput {
+	color:maroon;
+	margin-top: 2vh;
+	height:4vh;
+	width: 10vh;
+	font-size: 2vh;
+	font-family: 'Imprint MT Shadow';
+	text-align: center;
+	background-color: black;
+	margin-left: 2vw;
+}
+
+img[id='0-0'] {
+	border-radius: 30px 0px 0px 0px;
+}
+
+img[id='0-8'] {
+	border-radius: 0px 30px 0px 0px;
+}
+
+img[id='8-0'] {
+	border-radius: 0px 0px 0px 30px;
+}
+
+img[id='8-8'] {
+	border-radius: 0px 0px 30px 0px;
 }
