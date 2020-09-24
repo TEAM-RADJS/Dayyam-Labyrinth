@@ -612,7 +612,13 @@ function showEnvironment(){
 	}
 	//Robert TODO: translate the printEnvironment function from Dungeon_Game into javaScript here
 	var selfTile = document.getElementById(String(4)+'-'+String(4));
-	selfTile.setAttribute('src', 'assets/img/self.jpg')
+	if (mapData.map[mapData.playerPosition[0]][mapData.playerPosition[1]] == 2) {
+		selfTile.setAttribute('src', 'assets/img/safe.jpg');
+	} else {
+		selfTile.setAttribute('src', 'assets/img/self.jpg');
+	}
+
+	
 
 	left();
 		
@@ -923,6 +929,7 @@ function startGame(){
 	var mapSize = askSize.value;
 	makeNewMaze(mapSize);
 	var containerDiv = document.getElementById('containerDiv');
+	containerDiv.setAttribute('class', 'gamePlay');
 	containerDiv.innerHTML = '';
 	//TODO: use DOM to start audio
 	
@@ -951,9 +958,17 @@ function startGame(){
 // Inline code relocated from script tag in game.html
 var startButton = document.getElementById('formsHere'); 
 // starts the game when a submit takes place (startButton clicked)
-startButton.addEventListener('submit', function (e) {
+document.addEventListener('submit', function(e){
 	e.preventDefault();
 	var audio = new Audio('assets/ScaryHalloween.mp3');
-	// audio.play();
+	audio.addEventListener('ended', function(e){
+		e.preventDefault();
+		audio.play();
+	});
+	audio.play();
+});
+
+startButton.addEventListener('submit', function (e) {
+	e.preventDefault();
 	startGame();
 });

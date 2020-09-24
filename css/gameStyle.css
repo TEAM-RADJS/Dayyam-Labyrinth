@@ -21,3 +21,13 @@ table, tr, td {
 .victoryscreen>h1 {
 	
 }
+
+.lostScreen {
+	background-image: url('/assets/img/trapped_person.jpeg');
+	background-size: cover;
+}
+
+.startingScreen {
+	background-image: url('/assets/img/introPicture.jpg');
+	background-size: cover;
+}
