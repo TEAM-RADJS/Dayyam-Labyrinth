@@ -1,40 +1,89 @@
 /*css*/
 
-/*TODO: build out some of the broad style choices like for; #container > table > tr > td > img {width:Xvw;height:Yvh;}*/
+/*IN PROGRESS: build out some of the broad style choices like for; #container > table > tr > td > img {width:Xvw;height:Yvh;}*/
 
 h1 {
     height: 50px;
     text-align: center;
-    border: thin solid black;
+    border: thick solid seagreen;
+    width: 1480px;
+    border-radius: 8px;
+    text-shadow: 2px 2px 5px red;
+    box-shadow: 10px 10px 5px darkgrey;
+    /* height: 100px; */
+    background-color: black;
+    color: rgb(158, 226, 243);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    animation-name: animate1; 
+    animation-duration: 4s; 
 } 
+
+@keyframes animate1 {
+    from {
+       background-color: black;
+       color: lightskyblue;
+       border-radius: 5%;
+     } to {
+       background-color: lightseagreen;
+       color: lightsalmon;
+       border-radius: 70%;
+     }
+   }
+
+body {
+        /* background-image: linear-gradient(-90deg, black, grey); */
+       background-image: url(https://i.pinimg.com/564x/d1/5d/fc/d15dfc114fdc960e17d3e02710dbcbe1.jpg);
+       background-size: cover; 
+       height: calc(100vh - 300px);
+}
 
 h2 {
     text-align: center;
-    height: 30px;
+    height: 15vh;
+    color: red;
+    font-style: normal;
+    font-family: 'Grenze Gotisch', cursive;
+    font-weight: 100;
+    font-size: 5vh;
+    text-decoration: blink;
+    margin-bottom: auto;
+    margin-top: auto;
+
     /* border: thin solid black; */
 }
 
-p {
-    text-align: center;
-    height: 100px;
-
-}
 
 button {
     text-align: center;
     width: 100px;
-    margin: 50px;
-    margin-left: 580px;
-    /* display: inline-block; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
+    margin: auto;
+    padding: 15px 32px;
+    
+}
+
+form {
+
+    text-align: center;
+
 }
 
 a {
     text-align: center;
     width: 100px;
-    margin: 50px;
-    margin-left: 590px;
+    margin: auto;
+    color: antiquewhite;
+    font-size: 20px;
+    font-family: 'Grenze Gotisch', cursive;
+}
+p {
+
+    text-align: center;
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: auto;
+    color: antiquewhite;
+    font-size: 20px;
+    font-family: 'Grenze Gotisch', cursive;
+ 
 }

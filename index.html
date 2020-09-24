@@ -1,30 +1,48 @@
 <!-- HTML -->
 
-<!-- TODO: Build out the initial state of the HTML to have a large splash; maybe a div with attribute background-image:url('assets/imgfile'); and then stack form elements on top for start game and possibly settings for audio volume or anything: for start game think <input type='submit'> maybe-->
+<!-- TODO: Build out the initial state of the HTML to have a large splash; 
+    maybe a div with attribute background-image:url('assets/imgfile'); and 
+    then stack form elements on top for start game and possibly settings for 
+    audio volume or anything: for start game think <input type='submit'> maybe-->
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Header Name</title>
+        <title>Dayyam Labyrinth</title>
         <link rel="stylesheet" href="css/style.css"/>
     </head>
     <header>
-        <h1>Header Name</h1>
+        <h1>Descent into the Dayyam Labyrinth</h1>
     </header>
     
     <body>
         <div>
-            <h2>Name of Project</h2>
+            <link href="https://fonts.googleapis.com/css2?family=Grenze&family=Grenze+Gotisch:wght@200;300&display=swap"
+                rel="stylesheet">
+            <h2>Your Harrowing Adventure Begins Here</h2>
             <p>Text talking to the tech involved, low level brief explanation</p>
         </div>
+
         <div>
             <h2>How to play the game?</h2>
-            <p>Explaining how to play</p>
+
+            <ul>
+                <p>Start Perilous Game to Enter</p>
+                <p> Press space bar to stay still and Monsters will move without you moving<p>
+                <p>Lockers are safe spots</p>
+                <p>Navigate using WASD keys</p>
+                <p>Monsters cannot navigate though safe spots</p>
+                <p>Hint: monsters prefer sequence down up right left</p>
+
+            </ul>
+
         </div>
         <form id="submitForm">
-            <input type='submit' id = 'gameStart' value = 'Start Game' onclick='window.open("/game.html");'/>
+            <input type='submit' id='gameStart' value='Start Perilous Game' onclick='window.open("/game.html");' />
         </form>
+    
         <a href="https://github.com/TEAM-RADJS/Dayyam-Labyrinth"> Source Code </a>
+        
         
     </body>
 
