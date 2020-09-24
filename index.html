@@ -38,13 +38,22 @@
 
         </div>
         <form id="submitForm">
-            <input type='submit' id='gameStart' value='Start Perilous Game' onclick='window.open("/game.html");' />
+            <input type='submit' id='gameStart' value='Start Perilous Game' />
         </form>
         <div>
         <a href="https://github.com/TEAM-RADJS/Dayyam-Labyrinth"> Source Code </a>
         </div>
+      
+        <footer>Manufacuted by Team R.A.D.J.S.</footer>
         
     </body>
-    <footer>Manufacuted by Team R.A.D.J.S.</footer>
-    
+  
+    <script type="text/javascript">
+        var goToGame = document.getElementById('gameStart');
+        goToGame.addEventListener('click', function(e){
+            e.preventDefault();
+           window.location.replace('game.html');
+        });
+    </script>
+  
 </html>

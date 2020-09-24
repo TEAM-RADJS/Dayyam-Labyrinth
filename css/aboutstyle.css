@@ -2,6 +2,7 @@ body {
   background-image: url('../assets/img/dark_texture.jpg');
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
+  margin:0px;
 }
 
 p {
@@ -22,12 +23,26 @@ p:hover {
   box-shadow: 0px 0px 10px 10px rgb(250, 224, 74);
 }
 
-h2 {
+.memberName {
+  display: block;
   -webkit-text-stroke: 1.5px  black;
   color: rgb(255, 201, 52);
   padding-top: 10;
   border: 0px;
   margin: 0;
   font-size: 60px;
+  text-align: center;
+}
+
+#goHome {
+  color: blue;
+  font-size: 2vh;
+  background-color: black;
+  width: 20vh;
+  height:3vh;
+  border-radius: 0px 0px 30px 0px;
+  display: inline-block;
+  margin-bottom: 1vh;
+  font-family: 'Imprint MT Shadow';
   text-align: center;
 }
