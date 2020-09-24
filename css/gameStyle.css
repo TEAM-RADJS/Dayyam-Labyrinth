@@ -60,6 +60,14 @@ table, tr, td {
 	transform: translate(-50%, -50%);
 }
 
+#containerDiv > a:hover span {
+	display: none;
+}
+
+#containerDiv > a:hover:before {
+	content: 'Try again?';
+}
+
 .lostScreen {
 	background-image: url('/assets/img/trapped_person.jpeg');
 	background-size: cover;
