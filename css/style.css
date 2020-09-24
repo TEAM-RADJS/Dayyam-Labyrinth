@@ -40,12 +40,8 @@ body {
         /* background-image: linear-gradient(-90deg, black, grey); */
        background-image: url(https://i.pinimg.com/564x/d1/5d/fc/d15dfc114fdc960e17d3e02710dbcbe1.jpg);
        background-size: cover;
-<<<<<<< HEAD
-       height: calc(100vh - 300vh);
-=======
        height: 100vh;
        width: 100vw;
->>>>>>> 2044e746147365389aef9afdf03dfe8af40d02c2
 }
 
 h2 {
