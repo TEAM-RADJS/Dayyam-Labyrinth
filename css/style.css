@@ -3,17 +3,18 @@
 /*IN PROGRESS: build out some of the broad style choices like for; #container > table > tr > td > img {width:Xvw;height:Yvh;}*/
 
 h1 {
-    height: 50px;
+    height: 60px;
+    font-size: 9vh;
     text-align: center;
+    padding-bottom: 25px;
     border: thick solid seagreen;
     width: 1480px;
     border-radius: 8px;
     text-shadow: 2px 2px 5px red;
     box-shadow: 10px 10px 5px darkgrey;
-    /* height: 100px; */
     background-color: black;
     color: rgb(158, 226, 243);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Grenze Gotisch', cursive;
     animation-name: animate1; 
     animation-duration: 4s; 
 } 
@@ -39,12 +40,12 @@ body {
 
 h2 {
     text-align: center;
+    font-weight: 200;
     height: 15vh;
     color: red;
     font-style: normal;
     font-family: 'Grenze Gotisch', cursive;
-    font-weight: 100;
-    font-size: 5vh;
+    font-size: 8vh;
     text-decoration: blink;
     margin-bottom: auto;
     margin-top: auto;
@@ -52,28 +53,47 @@ h2 {
     /* border: thin solid black; */
 }
 
-
-button {
+input[type=submit] {
+    /* background-color: white; 
+    color: black; 
+    border: 2px solid #f44336; */
     text-align: center;
-    width: 100px;
     margin: auto;
+<<<<<<< HEAD
     padding: 15px 32px;
     
 }
 
 form {
-
+  
     text-align: center;
 
 }
+=======
+    margin-left: 580px;
+    margin-right: auto;
+    background-color: #f01e1e;
+    color: black;
+    font-weight: bold;
+    font-family: 'Grenze Gotisch', cursive;
+    font-size: 20px;
+   }
+>>>>>>> 59ff13845b88fde060c8075866963bb5d2133f2e
 
 a {
     text-align: center;
     width: 100px;
     margin: auto;
+<<<<<<< HEAD
     color: antiquewhite;
+    font-size: 25px;
+=======
+    margin-left: 610px;
+    color: rgb(121, 7, 7);
     font-size: 20px;
+>>>>>>> 59ff13845b88fde060c8075866963bb5d2133f2e
     font-family: 'Grenze Gotisch', cursive;
+    font-weight: bold;
 }
 p {
 
@@ -84,6 +104,6 @@ p {
     margin-bottom: auto;
     color: antiquewhite;
     font-size: 20px;
-    font-family: 'Grenze Gotisch', cursive;
+    font-family: 'Grenze Gotisch';
  
 }
