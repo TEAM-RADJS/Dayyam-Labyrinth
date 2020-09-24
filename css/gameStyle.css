@@ -66,3 +66,9 @@ table, tr, td {
 	margin-top: 70vh;
 	margin-left: 25vh;
 }
+
+#formsHere > label {
+	font-size: 8vh;
+	color: maroon;
+	font-family: 'Blackadder ITC';
+}
