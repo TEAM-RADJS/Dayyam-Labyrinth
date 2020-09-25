@@ -1,7 +1,7 @@
 //javascript
 mapData = {};
 selfGender = true;
-selfImage = 'assets/img/self.jpg';
+selfImage = './assets/img/self.jpg';
 const WALL = 0;
 const FLOOR = 1;
 const SAFE = 2;
@@ -13,7 +13,7 @@ function gameOver(){
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
 	theTable.setAttribute('class', 'lostScreen');
-	// theTable.setAttribute('style', 'background-image:url(assets/img/trapped_person.jpeg);');
+	// theTable.setAttribute('style', 'background-image:url(./assets/img/trapped_person.jpeg);');
 	var gameOverLink = document.createElement('a');
 	theTable.append(gameOverLink);
 	gameOverLink.setAttribute('href', 'game.html')
@@ -26,7 +26,7 @@ function escapedScreen() {
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
 	theTable.setAttribute('class', 'victoryScreen');
-	// theTable.setAttribute('background-image', 'url(assets/img/scary_house.jpeg)');
+	// theTable.setAttribute('background-image', 'url(./assets/img/scary_house.jpeg)');
 	var gameOverLink = document.createElement('a');
 	theTable.append(gameOverLink);
 	gameOverLink.setAttribute('href', 'game.html')
@@ -219,19 +219,19 @@ function showEnvironment(){
 		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
 		var tileImage = document.getElementById(String(4+valY)+'-'+String(4+valX));
 		if (checkPosition=='empty') {
-			tileImage.setAttribute('src', 'assets/img/empty.jpg');
+			tileImage.setAttribute('src', './assets/img/empty.jpg');
 		} else if (checkPosition == FLOOR) {
-			tileImage.setAttribute('src', 'assets/img/floor.jpg');
+			tileImage.setAttribute('src', './assets/img/floor.jpg');
 		} else if (checkPosition == WALL) {
-			tileImage.setAttribute('src', 'assets/img/wall.jpg');
+			tileImage.setAttribute('src', './assets/img/wall.jpg');
 		} else if (checkPosition == SAFE) {
-			tileImage.setAttribute('src', 'assets/img/safe.jpg');
+			tileImage.setAttribute('src', './assets/img/safe.jpg');
 		} else {
-			tileImage.setAttribute('src', 'assets/img/monster.png');
+			tileImage.setAttribute('src', './assets/img/monster.png');
 		}
 		if (checkPosition == FLOOR || checkPosition == SAFE){
 			if (mapData.playerPosition[0]+valY == 0 || mapData.playerPosition[0]+valY == mapData.map.length-1 || mapData.playerPosition[1]+valX == 0 || mapData.playerPosition[1]+valX == mapData.map.length-1){
-				tileImage.setAttribute('src', 'assets/img/forrest.jpeg');
+				tileImage.setAttribute('src', './assets/img/forrest.jpeg');
 			}
 		} 			
 	}
@@ -624,13 +624,13 @@ function showEnvironment(){
 	for (let i = 0; i < mapData.viewMap.length; i++){
 		for (let j = 0; j < mapData.viewMap.length; j++){
 			var tileImage = document.getElementById(String(i)+'-'+String(j));
-			tileImage.setAttribute('src', 'assets/img/empty.jpg');
+			tileImage.setAttribute('src', './assets/img/empty.jpg');
 		}
 	}
 	//Robert TODO: translate the printEnvironment function from Dungeon_Game into javaScript here
 	var selfTile = document.getElementById(String(4)+'-'+String(4));
 	if (mapData.map[mapData.playerPosition[0]][mapData.playerPosition[1]] == 2) {
-		selfTile.setAttribute('src', 'assets/img/safe.jpg');
+		selfTile.setAttribute('src', './assets/img/safe.jpg');
 	} else {
 		selfTile.setAttribute('src', selfImage);
 	}
@@ -874,9 +874,9 @@ function movePlayer(keyPressed) {
 		if (theMap[(oldYPosition)-1][(oldXPosition)] === FLOOR || theMap[(oldYPosition)-1][(oldXPosition)] === SAFE) { // is traversible
 			oldYPosition -= 1;
 			if (selfGender == true) {
-				selfImage = 'assets/img/male_walk_up.png';
+				selfImage = './assets/img/male_walk_up.png';
 			} else {
-				selfImage = 'assets/img/female_walk_up.png';
+				selfImage = './assets/img/female_walk_up.png';
 			}
 		} else if (theMap[(oldYPosition)-1][(oldXPosition)] === WALL) {
 			return;
@@ -889,9 +889,9 @@ function movePlayer(keyPressed) {
 		if (theMap[(oldYPosition)+1][(oldXPosition)] === FLOOR || theMap[(oldYPosition)+1][(oldXPosition)] === SAFE) {
 			oldYPosition += 1;
 			if (selfGender == true) {
-				selfImage = 'assets/img/male_walk_down.png';
+				selfImage = './assets/img/male_walk_down.png';
 			} else {
-				selfImage = 'assets/img/female_walk_down.png';
+				selfImage = './assets/img/female_walk_down.png';
 			}
 		} else if (theMap[(oldYPosition)+1][(oldXPosition)] === WALL) {
 			return;
@@ -904,9 +904,9 @@ function movePlayer(keyPressed) {
 		if (theMap[(oldYPosition)][(oldXPosition)-1] === FLOOR || theMap[(oldYPosition)][(oldXPosition)-1] === SAFE) {
 			oldXPosition -= 1;
 			if (selfGender == true) {
-				selfImage = 'assets/img/male_walk_left.png';
+				selfImage = './assets/img/male_walk_left.png';
 			} else {
-				selfImage = 'assets/img/female_walk_left.png';
+				selfImage = './assets/img/female_walk_left.png';
 			}
 		} else if (theMap[(oldYPosition)][(oldXPosition-1)] === WALL) {
 			return;
@@ -919,9 +919,9 @@ function movePlayer(keyPressed) {
 		if (theMap[(oldYPosition)][(oldXPosition)+1] === FLOOR || theMap[(oldYPosition)][(oldXPosition)+1] === SAFE) {
 			oldXPosition += 1;
 			if (selfGender == true) {
-				selfImage = 'assets/img/male_walk_right.png';
+				selfImage = './assets/img/male_walk_right.png';
 			} else {
-				selfImage = 'assets/img/female_walk_right.png';
+				selfImage = './assets/img/female_walk_right.png';
 			}
 		} else if (theMap[(oldYPosition)][(oldXPosition+1)] === WALL) {
 			return;
@@ -932,9 +932,9 @@ function movePlayer(keyPressed) {
 
 	else {
 		if (selfGender == true) {
-			selfImage = 'assets/img/male_space_tile.png';
+			selfImage = './assets/img/male_space_tile.png';
 		} else {
-			selfImage = 'assets/img/female_space_tile.png';
+			selfImage = './assets/img/female_space_tile.png';
 		}
 	}
 
@@ -972,9 +972,9 @@ function startGame(){
 		selfGender = false;
 	}
 	if (selfGender == true) {
-		selfImage = 'assets/img/male_space_tile.png';
+		selfImage = './assets/img/male_space_tile.png';
 	} else {
-		selfImage = 'assets/img/female_space_tile.png';
+		selfImage = './assets/img/female_space_tile.png';
 	}
 	makeNewMaze(mapSize);
 	var containerDiv = document.getElementById('containerDiv');
@@ -1009,7 +1009,7 @@ var startButton = document.getElementById('formsHere');
 // starts the game when a submit takes place (startButton clicked)
 document.addEventListener('submit', function(e){
 	e.preventDefault();
-	var audio = new Audio('assets/ScaryHalloween.mp3');
+	var audio = new Audio('./assets/ScaryHalloween.mp3');
 	audio.addEventListener('ended', function(e){
 		e.preventDefault();
 		audio.play();
