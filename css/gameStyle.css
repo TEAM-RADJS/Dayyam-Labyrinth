@@ -1,7 +1,7 @@
 body {
 	height:100vh;
 	width:100vw;
-	background-image: url('/assets/img/dark_texture.jpg');
+	background-image: url('../assets/img/dark_texture.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	margin:0px;
@@ -63,7 +63,7 @@ table, tr, td {
 
 
 .victoryScreen {
-	background-image: url('/assets/img/scary_house.jpeg');
+	background-image: url('../assets/img/scary_house.jpeg');
 	background-size: cover;
 }
 
@@ -87,7 +87,7 @@ table, tr, td {
 }
 
 .lostScreen {
-	background-image: url('/assets/img/trapped_person.jpeg');
+	background-image: url('../assets/img/trapped_person.jpeg');
 	background-size: cover;
 }
 
@@ -101,7 +101,7 @@ table, tr, td {
 }
 
 .startingScreen {
-	background-image: url('/assets/img/introPicture.jpg');
+	background-image: url('../assets/img/introPicture.jpg');
 	background-size: cover;
 }
 
