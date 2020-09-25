@@ -7,6 +7,11 @@ body {
 
 p:hover {
   box-shadow: 0px 0px 10px 10px rgb(250, 224, 74);
+  cursor: pointer;
+}
+
+a:hover {
+  cursor: pointer;
 }
 
 .memberDescription {
