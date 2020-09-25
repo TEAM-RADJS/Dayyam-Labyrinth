@@ -5,43 +5,76 @@ body {
   margin:0px;
 }
 
-p {
-  font-size: 20px;
-  background-color: black;
-  /* border: solid rgb(250, 224, 74); */
-  border-width: 3px;
-  padding: 10px;
-  color: white;
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-  box-shadow: 0px 0px 10px 10px whitesmoke;
-}
-
 p:hover {
   box-shadow: 0px 0px 10px 10px rgb(250, 224, 74);
 }
 
-.memberName {
+.memberDescription {
+  display: inline-block;
+  font-size: 1.1vw;
+  background-color: black;
+  /* border: solid rgb(250, 224, 74); */
+  border-width: 0px;
+  padding: 10px;
+  color: white;
+  width: 30vw;
+  margin-left: 13.6vw;
+  vertical-align: top;
+  margin-top: 2vh;
+  text-align: left;
+  box-shadow: 0px 0px 10px 10px whitesmoke;
+}
+
+.lastMemberDescription {
   display: block;
-  -webkit-text-stroke: 1.5px  black;
-  color: rgb(255, 201, 52);
+  font-size: 1.1vw;
+  background-color: black;
+  /* border: solid rgb(250, 224, 74); */
+  border-width: 0px;
+  padding: 10px;
+  color: white;
+  width: 30vw;
+  margin: auto;
+  margin-top:2vh;
+  vertical-align: top;
+  text-align: left;
+  box-shadow: 0px 0px 10px 10px whitesmoke;
+}
+
+.memberName {
+  display: inline-block;
+  -webkit-text-stroke: 1px  rgb(255, 201, 52);
+  color: black;
   padding-top: 10;
   border: 0px;
   margin: 0;
-  font-size: 60px;
+  font-size: 3vw;
   text-align: center;
+  width: 25vw;
+  margin-left: 17vw;
+}
+
+.lastMemberName {
+  display: inline-block;
+  -webkit-text-stroke: 1px  rgb(255, 201, 52);
+  color: black;
+  padding-top: 10;
+  border: 0px;
+  margin: 0;
+  font-size: 3vw;
+  text-align: center;
+  width: 25vw;
+  margin-left: 37.5vw;
 }
 
 #goHome {
+  display: block;
   color: blue;
   font-size: 2vh;
   background-color: black;
   width: 20vh;
   height:3vh;
   border-radius: 0px 0px 30px 0px;
-  display: inline-block;
   margin-bottom: 1vh;
   font-family: 'Imprint MT Shadow';
   text-align: center;
