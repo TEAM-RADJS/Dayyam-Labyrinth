@@ -12,6 +12,7 @@ p:hover {
 
 a:hover {
   cursor: pointer;
+  color: peachpuff;
 }
 
 .memberDescription {
@@ -49,28 +50,28 @@ a:hover {
 
 .memberName {
   display: inline-block;
-  -webkit-text-stroke: 1px  rgb(255, 201, 52);
+  -webkit-text-stroke: 1.5px  rgb(255, 201, 52);
   color: black;
   padding-top: 10;
   border: 0px;
   margin: 0;
-  font-size: 3vw;
+  font-size: 3.5vw;
   text-align: center;
-  width: 25vw;
-  margin-left: 17vw;
+  width: 30vw;
+  margin-left: 13.6vw;
 }
 
 .lastMemberName {
   display: inline-block;
-  -webkit-text-stroke: 1px  rgb(255, 201, 52);
+  -webkit-text-stroke: 1.5px  rgb(255, 201, 52);
   color: black;
   padding-top: 10;
   border: 0px;
   margin: 0;
-  font-size: 3vw;
+  font-size: 3.5vw;
   text-align: center;
-  width: 25vw;
-  margin-left: 37.5vw;
+  width: 30vw;
+  margin-left: 35vw;
 }
 
 #goHome {
