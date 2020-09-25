@@ -7,14 +7,14 @@ header {
 }
 
 h1 {
-    height: 1vh;
-    font-size: 10vh;
+    height: 3vh;
+    font-size: 6.5vh;
     text-align: center;
     margin: auto;
     padding-bottom: 15vh;
     border: thick solid rgb(107, 124, 103);
-    width: 90vw;
-    border-radius: 6px;
+    width: 85vw;
+    border-radius: 8px;
     text-shadow: 2px 2px 5px red;
     box-shadow: 10px 10px 5px darkgrey;
     background-color: black;
