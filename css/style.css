@@ -90,12 +90,12 @@ a {
 }
 p {
     text-align: center;
-    -webkit-text-stroke: .07vw black;
+    -webkit-text-stroke: .03vw rgb(255, 201, 52);
     letter-spacing: .08vw;
     width: 60vw;
     margin: auto;
     margin-top: 5vh;
-    color: white;
+    color: black;
     font-size: 1.5vw;
     font-family: 'Bubblegum Sans';
     font-weight: lighter;
