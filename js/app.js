@@ -2,6 +2,10 @@
 mapData = {};
 selfGender = true;
 selfImage = 'assets/img/self.jpg';
+const WALL = 0;
+const FLOOR = 1;
+const SAFE = 2;
+
 
 function gameOver(){
 	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
@@ -34,9 +38,7 @@ function escapedScreen() {
  // May we add comments throughout this code project? yes :?
 
 
-const WALL = 0;
-const FLOOR = 1;
-const SAFE = 2;
+
 
 function makeNewMaze(mapSize){
 	//Robert TODO: build a process by which a new array of arrays is created with the proper lengths, and to ensure that there IS a path to the end
@@ -63,8 +65,8 @@ function makeNewMaze(mapSize){
 
 		mapData.map[mapData.playerPosition[0]][mapData.playerPosition[1]] = FLOOR;
 
-		curY = mapData.playerPosition[0];
-		curX = mapData.playerPosition[1];
+		var curY = mapData.playerPosition[0];
+		var curX = mapData.playerPosition[1];
 
 		var triedToStep = 0;
 		var madeAStep = 0;
@@ -84,7 +86,7 @@ function makeNewMaze(mapSize){
 					curY-=1;
 					if (madeAStep%180 == 0){
 						mapData.map[curY][curX] = parseInt('4'+String(monsterCount));
-						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']');
+						eval('mapData.monster'+monsterCount+'Origin = ['+curY+','+curX+']'); //mapData.monster0Origin = [11, 12]
 						monsterCount+=1;
 					} else if (madeAStep%20 == 0){
 						mapData.map[curY][curX] = SAFE;
@@ -196,9 +198,9 @@ function makeNewMaze(mapSize){
 
 	for (let i = 0; i < 9; i++) {
 		for (let j = 0; j < 9; j++) {
-			if (typeof(mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]) != 'undefined'){
+			try {
 				mapData.viewMap[i].push((mapData.map[mapData.playerPosition[0]-(4-i)][mapData.playerPosition[0]-(4-j)]));
-			} else {
+			} catch {
 				mapData.viewMap[i].push(0);
 			}
 		}

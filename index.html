@@ -41,7 +41,8 @@
 
         </div>
         <form id="submitForm">
-            <input type='submit' id='gameStart' value='Start Perilous Game' />
+            <button id='teamStart'>About the team</button>
+            <button id='gameStart'>Start Perilous Game</button>
         </form>
         <div>
         <a href="https://github.com/TEAM-RADJS/Dayyam-Labyrinth"> Source Code </a>
@@ -53,9 +54,14 @@
   
     <script type="text/javascript">
         var goToGame = document.getElementById('gameStart');
+        var aboutTeam = document.getElementById('teamStart');
         goToGame.addEventListener('click', function(e){
             e.preventDefault();
            window.location.replace('game.html');
+        });
+        aboutTeam.addEventListener('click', function(e){
+            e.preventDefault();
+           window.location.replace('about.html');
         });
     </script>
   
