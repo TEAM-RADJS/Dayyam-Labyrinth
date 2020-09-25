@@ -8,12 +8,12 @@ header {
 
 h1 {
     height: 3vh;
-    font-size: 6vw;
+    font-size: 6.5vh;
     text-align: center;
     margin: auto;
     padding-bottom: 10vh;
     border: thick solid rgb(107, 124, 103);
-    width: 90vw;
+    width: 85vw;
     border-radius: 8px;
     text-shadow: 2px 2px 5px red;
     box-shadow: 10px 10px 5px darkgrey;
