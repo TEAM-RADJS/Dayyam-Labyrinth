@@ -8,7 +8,7 @@ const SAFE = 2;
 
 
 function gameOver(){
-	//TODO: design what we want losing to look like, and then use DOM to set the page to look like that
+	//DONE: design what we want losing to look like, and then use DOM to set the page to look like that
 	//Thoughts here?
 	var theTable = document.getElementById('containerDiv')
 	theTable.innerHTML = '';
@@ -216,7 +216,7 @@ function showEnvironment(){
 			var checkPosition = 'empty';
 		}
 		
-		//TODO: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
+		//DONE: use DOM to assign the image with id String((mapData['playerPosition'][0])+increments[0])+'-'+String((mapData['playerPosition'][1])+increments[1]) a source attribute dependant on the value of checkPosition
 		var tileImage = document.getElementById(String(4+valY)+'-'+String(4+valX));
 		if (checkPosition=='empty') {
 			tileImage.setAttribute('src', './assets/img/empty.jpg');
@@ -620,7 +620,7 @@ function showEnvironment(){
 	var curX = mapData.playerPosition[1];
 	var lastCol = mapData.map.length-1;
 	var lastRow = mapData.map[0].length-1;
-	//TODO: write a for loop to iterate over all image id's and assign the empty image source
+	//DONE: write a for loop to iterate over all image id's and assign the empty image source
 	for (let i = 0; i < mapData.viewMap.length; i++){
 		for (let j = 0; j < mapData.viewMap.length; j++){
 			var tileImage = document.getElementById(String(i)+'-'+String(j));
