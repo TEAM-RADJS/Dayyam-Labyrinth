@@ -3,18 +3,18 @@
 /*IN PROGRESS: build out some of the broad style choices like for; #container > table > tr > td > img {width:Xvw;height:Yvh;}*/
 
 header {
-  margin-top: 2vh;
+  margin-top: 1vh;
 }
 
 h1 {
-    height: 3vh;
-    font-size: 6vw;
+    height: 1vh;
+    font-size: 10vh;
     text-align: center;
     margin: auto;
-    padding-bottom: 10vh;
+    padding-bottom: 15vh;
     border: thick solid rgb(107, 124, 103);
     width: 90vw;
-    border-radius: 8px;
+    border-radius: 6px;
     text-shadow: 2px 2px 5px red;
     box-shadow: 10px 10px 5px darkgrey;
     background-color: black;
@@ -52,7 +52,7 @@ h2 {
     text-shadow: 2px 2px 5px black;
     font-style: normal;
     font-family: 'Grenze Gotisch', cursive;
-    font-size: 5vw;
+    font-size: 4vw;
     text-decoration: blink;
     margin-bottom: auto;
     margin-top: 5vh;
